@@ -9,8 +9,7 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    let memoryManagement = MemoryManagement()
-    let timeManage = TimerDay()
+    let appControl = AppControl()
     
     // MARK: Remaining Day
     let dayStackView : UIStackView = {
@@ -33,7 +32,6 @@ class MainViewController: UIViewController {
     let dayLeft : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "30"
         label.textColor = UIColor(named: "textColor")
         label.font = UIFont.systemFont(ofSize: 70, weight: .bold)
         return label
@@ -50,7 +48,7 @@ class MainViewController: UIViewController {
     let pushUpLeftLabel : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Push Up \n Left"
+        label.text = "Push Up \n Left Today"
         label.textAlignment = .center
         label.numberOfLines = 2
         label.textColor = UIColor(named: "textColor")
@@ -80,22 +78,17 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: "background")
-        memoryManagement.firstTime()
+                
+        appControl.startControl()
+        
+        pushUpLeft.text = "\(appControl.pushUpLeft)"
+        dayLeft.text = "\(appControl.dayLeft)"
+
         setUp()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if isBeingDismissed {
-            pushUpLeft.text = "\(memoryManagement.pushUpLeft)"
-            print("oldu")
-        }
-    }
- 
+     
     func setUp() {
-        
-        pushUpLeft.text = "\(memoryManagement.pushUpLeft)"
-        
+                
         dayStackView.addSubview(dayLeftLabel)
         dayStackView.addSubview(dayLeft)
         view.addSubview(dayStackView)
@@ -145,7 +138,7 @@ class MainViewController: UIViewController {
         pushUpCountViewController.modalPresentationStyle = .fullScreen
         self.present(pushUpCountViewController, animated:true, completion:nil)
         
-        timeManage.challengeStarted()
+        appControl.startControl()
         
         
         

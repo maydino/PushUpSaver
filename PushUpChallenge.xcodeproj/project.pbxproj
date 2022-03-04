@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		B176268727BCC70E00F05028 /* PushUpCountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B176268627BCC70E00F05028 /* PushUpCountViewController.swift */; };
 		B176268927BD79F500F05028 /* MemoryManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B176268827BD79F500F05028 /* MemoryManagement.swift */; };
-		B191090227CDEF99004200A6 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B191090127CDEF99004200A6 /* Timer.swift */; };
+		B191090227CDEF99004200A6 /* TimeManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B191090127CDEF99004200A6 /* TimeManagement.swift */; };
 		B191090427CDF30D004200A6 /* AppControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B191090327CDF30D004200A6 /* AppControl.swift */; };
+		B191090627CF1EB2004200A6 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B191090527CF1EB2004200A6 /* Alert.swift */; };
 		B1BC970A27BA0FA200A8DED5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BC970927BA0FA200A8DED5 /* AppDelegate.swift */; };
 		B1BC970C27BA0FA200A8DED5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BC970B27BA0FA200A8DED5 /* SceneDelegate.swift */; };
 		B1BC970E27BA0FA200A8DED5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BC970D27BA0FA200A8DED5 /* MainViewController.swift */; };
@@ -21,8 +22,9 @@
 /* Begin PBXFileReference section */
 		B176268627BCC70E00F05028 /* PushUpCountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushUpCountViewController.swift; sourceTree = "<group>"; };
 		B176268827BD79F500F05028 /* MemoryManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryManagement.swift; sourceTree = "<group>"; };
-		B191090127CDEF99004200A6 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		B191090127CDEF99004200A6 /* TimeManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManagement.swift; sourceTree = "<group>"; };
 		B191090327CDF30D004200A6 /* AppControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppControl.swift; sourceTree = "<group>"; };
+		B191090527CF1EB2004200A6 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		B1BC970627BA0FA200A8DED5 /* PushUpChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PushUpChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1BC970927BA0FA200A8DED5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1BC970B27BA0FA200A8DED5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +45,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B1B7D61E27CF4D2D00AAFDA1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B1BC970D27BA0FA200A8DED5 /* MainViewController.swift */,
+				B176268627BCC70E00F05028 /* PushUpCountViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		B1BC96FD27BA0FA100A8DED5 = {
 			isa = PBXGroup;
 			children = (
@@ -63,12 +74,12 @@
 			isa = PBXGroup;
 			children = (
 				B1BC970927BA0FA200A8DED5 /* AppDelegate.swift */,
-				B1BC970D27BA0FA200A8DED5 /* MainViewController.swift */,
-				B176268627BCC70E00F05028 /* PushUpCountViewController.swift */,
 				B1BC970B27BA0FA200A8DED5 /* SceneDelegate.swift */,
+				B1B7D61E27CF4D2D00AAFDA1 /* Controller */,
 				B176268827BD79F500F05028 /* MemoryManagement.swift */,
-				B191090127CDEF99004200A6 /* Timer.swift */,
+				B191090127CDEF99004200A6 /* TimeManagement.swift */,
 				B191090327CDF30D004200A6 /* AppControl.swift */,
+				B191090527CF1EB2004200A6 /* Alert.swift */,
 				B1BC971227BA0FA400A8DED5 /* Assets.xcassets */,
 				B1BC971427BA0FA400A8DED5 /* LaunchScreen.storyboard */,
 				B1BC971727BA0FA400A8DED5 /* Info.plist */,
@@ -149,9 +160,10 @@
 				B1BC970E27BA0FA200A8DED5 /* MainViewController.swift in Sources */,
 				B1BC970A27BA0FA200A8DED5 /* AppDelegate.swift in Sources */,
 				B1BC970C27BA0FA200A8DED5 /* SceneDelegate.swift in Sources */,
-				B191090227CDEF99004200A6 /* Timer.swift in Sources */,
+				B191090227CDEF99004200A6 /* TimeManagement.swift in Sources */,
 				B176268727BCC70E00F05028 /* PushUpCountViewController.swift in Sources */,
 				B191090427CDF30D004200A6 /* AppControl.swift in Sources */,
+				B191090627CF1EB2004200A6 /* Alert.swift in Sources */,
 				B176268927BD79F500F05028 /* MemoryManagement.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
