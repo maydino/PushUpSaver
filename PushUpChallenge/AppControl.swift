@@ -9,106 +9,179 @@ import UIKit
 
 class AppControl {
     
-//    let appControlMemoryManagement = MemoryManagement()
-//    let appControlTimeManagement = TimeManagement()
-    var dayLeft = 30
-    var today = Date.now
-    var lastDayEnter = Date()
-    var pushUpLeft = 100
+    // MARK: Alerts
+    let alert = Alert()
+    var showAlertChallengeTerminated = false
+    var showAlertDailyPushUpCompleted = false
+    var showAlertChallengeCompleted = false
 
+    // Variables
+    var dayLeft = 1
+    var pushUpLeft = 10
+    var buttonPressed = false
+    
+    // Constants
+    let days = 1
+    let pushUps = 10
+
+    // MARK: Dates
+    let calendar = Calendar.current
+    let today = Date()
+    var difference = 0
+    
+    // MARK: Memory
     let defaults = UserDefaults.standard
     
+    // MARK: User Information
+    var info = ""
+    
     func startControl() {
-        print("Start Control ran")
-        print("push up\(defaults.object(forKey: "pushUp"))")
-        print("day left\(defaults.object(forKey: "dayLeft"))")
-
-
+        
         // First time user clicked start workout
-        if defaults.object(forKey: "pushUp") as? Int == nil || defaults.object(forKey: "dayLeft") as? Int == nil {
+        if defaults.object(forKey: "pushUp") as? Int == nil || defaults.object(forKey: "dayLeft") as? Int == nil || defaults.object(forKey: "lastDayEnter") as? Date == nil {
             
+            
+            print("Step 0")
             // Push Up
-            defaults.set(pushUpLeft, forKey: "pushUp")
-            
+            pushUpLeft = pushUps
+            defaults.set(pushUps, forKey: "pushUp")
             // Day
+            dayLeft = days
             defaults.set(dayLeft, forKey: "dayLeft")
-            lastDayEnter = today
-            
-            // MARK: Alert Challenge started!
-            
-            print("First time you open the challenge")
+            // Last day user enter the app
+            defaults.set(today, forKey: "lastDayEnter")
 
-        // Same day
+
+            // MARK: Alert Challenge started!
+            print("First time you open the challenge")
+            
+            info = "Challenge Started"
+
+        // After first time started app
         } else if defaults.object(forKey: "pushUp") != nil && defaults.object(forKey: "dayLeft") != nil {
             
-            print("Something happened")
+            print("Step 1")
+                        
+            pushUpLeft = (defaults.object(forKey: "pushUp") as! Int)
+            dayLeft = (defaults.object(forKey: "dayLeft") as! Int)
+            
+                        
+            // MARK: Step 1, Same Day, Still have push up to complete and day
 
-            if dayDifference() == 0 && defaults.object(forKey: "pushUp") as! Int > 0 {
+            if todayCheck() == true && tomorrowCheck() == false && defaults.object(forKey: "pushUp") as! Int > 0 && dayLeft >= 0 {
                 
-                onePushUpCompleted()
+                print("Step 2")
+
+                if buttonPressed == true {
+                    onePushUpCompleted()
+                    buttonPressed = false
+                    
+                    if pushUpLeft == 0 && dayLeft > 0 {
+                        showAlertDailyPushUpCompleted = true
+                        info = "Challenge Completed for today..."
+                    } else if pushUpLeft == 0 && dayLeft == 0 {
+                        
+                        print("Step 5")
+
+                        removeUserDefaultsObjects()
+                        showAlertChallengeCompleted = true
+                    } else {
+                        info = "Challenge Started"
+
+                    }
+                }
                 
                 defaults.set(pushUpLeft, forKey: "pushUp")
-                print("You Start to to challenge")
+                defaults.set(dayLeft, forKey: "dayLeft")
                 
-            } else if dayDifference() == 0 && pushUpLeft == 0 && dayLeft >= 0 {
-                
-                dayLeft -= 1
-                
+                print("You Start to the challenge")
+            
+            // MARK: Step 2, Same day All push Ups Completed
+            } else if todayCheck() == true && tomorrowCheck() == false && pushUpLeft == 0 && dayLeft >= 0 {
+                print("Step 3")
+
                 // MARK: Success! Daily 100 completed Alert! return to main view
-                print("100 push up completed for today")
                 
-            } else if dayDifference() == 0 && pushUpLeft == 0 && dayLeft == 0 {
-                
+                showAlertDailyPushUpCompleted = true
+                print("All Push ups completed for today.")
+                info = "Challenge Completed for today..."
+
+            
+            // MARK: New day, new push ups
+            } else if todayCheck() == false && tomorrowCheck() == true && pushUpLeft == 0 && dayLeft >= 0 {
+                print("Step 4")
+
                 // Push Up
-                defaults.set(100, forKey: "pushUp")
-                
+                pushUpLeft = pushUps
+                defaults.set(pushUpLeft, forKey: "pushUp")
                 // Day
-                defaults.set(30, forKey: "dayLeft")
-                
-                // MARK: Success! Daily 100 completed Alert! return to main view
-                
-                print("Challenge Completed!")
-                
-            } else if pushUpLeft > 0 && pushUpLeft > 0 {
+                defaults.object(forKey: "dayLeft")
+                dayLeft = dayLeft - 1
+                defaults.set(dayLeft, forKey: "dayLeft")
+                defaults.set(today, forKey: "lastDayEnter")
+
+            } else if pushUpLeft > 0 && tomorrowCheck() == true {
                 // MARK: Alert! Sorry, you didn't finish challenge in time, terminated the challenge, return the main view
                 
-                // Push Up
-                defaults.set(100, forKey: "pushUp")
+                print("Step 6")
+
+                removeUserDefaultsObjects()
+                defaults.set(today, forKey: "lastDayEnter")
+
                 
-                // Day
-                defaults.set(30, forKey: "dayLeft")
+                showAlertChallengeTerminated = true
+                
+                print("User did not completed in the time")
+                
+            } else if pushUpLeft == 0 && tomorrowCheck() == false && todayCheck() == false {
+                // MARK: Alert! Sorry, you didn't finish challenge in time, terminated the challenge, return the main view
+                
+                print("Step 7")
+
+                removeUserDefaultsObjects()
+                defaults.set(today, forKey: "lastDayEnter")
+
+                showAlertChallengeTerminated = true
                 
                 print("User did not completed in the time")
                 
             }
         }
     }
-    
-    func dayDifference() -> Int? {
-        let interval = today - lastDayEnter
-        print("Day Difference: \(interval)")
-        return interval.day
-    }
-    
-    func onePushUpCompleted() {
-        
+
+    private func onePushUpCompleted() {
         pushUpLeft -= 1
+    }
+    
+    func tomorrowCheck() -> Bool {
+        
+        let tomorrow = (defaults.object(forKey: "lastDayEnter") as! Date).addingTimeInterval(86400)
+        
+        if calendar.isDateInToday(tomorrow) {
+            print("tomorrow is tomorrow")
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func todayCheck() -> Bool {
+        let todayCheck = calendar.isDateInToday(defaults.object(forKey: "lastDayEnter") as! Date)
+        
+        print("Today is today\(calendar.isDateInToday(defaults.object(forKey: "lastDayEnter") as! Date))")
+        
+        return todayCheck
+    }
+    
+    func removeUserDefaultsObjects() {
+        
+        defaults.removeObject(forKey: "lastDayEnter")
+        defaults.removeObject(forKey: "pushUp")
+        defaults.removeObject(forKey: "dayLeft")
+        defaults.removeObject(forKey: "firstTimeOpened")
+        print("All User Defaults Objects Removed")
         
     }
-
-    
     
 }
-
-extension Date {
-
-    static func -(recent: Date, previous: Date) -> (month: Int?, day: Int?, hour: Int?) {
-        let day = Calendar.current.dateComponents([.day], from: previous, to: recent).day
-        let month = Calendar.current.dateComponents([.month], from: previous, to: recent).month
-        let hour = Calendar.current.dateComponents([.hour], from: previous, to: recent).hour
-        
-        return (month: month, day: day, hour: hour)
-    }
-}
-
 

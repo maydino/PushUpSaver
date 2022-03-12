@@ -6,3 +6,25 @@
 //
 
 import Foundation
+import UIKit
+
+
+struct Alert {
+    
+    static var dismissVC = PushUpCountViewController()
+    
+    static func showAlert(on vc: UIViewController,titleText: String, messageText: String) {
+        
+        // create the alert
+        let alert = UIAlertController(title: titleText, message: messageText, preferredStyle: .alert)
+        
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        // show the alert
+        vc.present(alert, animated: true)
+        
+    }
+    
+    
+}

@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B13F691B27D47E0E00CCF605 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13F691A27D47E0E00CCF605 /* Colors.swift */; };
+		B13F691F27D70DB800CCF605 /* TestDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13F691E27D70DB800CCF605 /* TestDates.swift */; };
+		B13F692127D82B3800CCF605 /* nothing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13F692027D82B3800CCF605 /* nothing.swift */; };
 		B176268727BCC70E00F05028 /* PushUpCountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B176268627BCC70E00F05028 /* PushUpCountViewController.swift */; };
-		B176268927BD79F500F05028 /* MemoryManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B176268827BD79F500F05028 /* MemoryManagement.swift */; };
-		B191090227CDEF99004200A6 /* TimeManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B191090127CDEF99004200A6 /* TimeManagement.swift */; };
+		B17C0A2127D95000005D39EB /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17C0A2027D95000005D39EB /* CustomAlert.swift */; };
 		B191090427CDF30D004200A6 /* AppControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B191090327CDF30D004200A6 /* AppControl.swift */; };
 		B191090627CF1EB2004200A6 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B191090527CF1EB2004200A6 /* Alert.swift */; };
 		B1BC970A27BA0FA200A8DED5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BC970927BA0FA200A8DED5 /* AppDelegate.swift */; };
@@ -20,9 +22,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B13F691A27D47E0E00CCF605 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		B13F691E27D70DB800CCF605 /* TestDates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDates.swift; sourceTree = "<group>"; };
+		B13F692027D82B3800CCF605 /* nothing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nothing.swift; sourceTree = "<group>"; };
 		B176268627BCC70E00F05028 /* PushUpCountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushUpCountViewController.swift; sourceTree = "<group>"; };
-		B176268827BD79F500F05028 /* MemoryManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryManagement.swift; sourceTree = "<group>"; };
-		B191090127CDEF99004200A6 /* TimeManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManagement.swift; sourceTree = "<group>"; };
+		B17C0A2027D95000005D39EB /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		B191090327CDF30D004200A6 /* AppControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppControl.swift; sourceTree = "<group>"; };
 		B191090527CF1EB2004200A6 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		B1BC970627BA0FA200A8DED5 /* PushUpChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PushUpChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,6 +49,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B17C0A1F27D90A8D005D39EB /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				B1BC970B27BA0FA200A8DED5 /* SceneDelegate.swift */,
+				B1BC970927BA0FA200A8DED5 /* AppDelegate.swift */,
+				B1BC971227BA0FA400A8DED5 /* Assets.xcassets */,
+				B1BC971427BA0FA400A8DED5 /* LaunchScreen.storyboard */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
 		B1B7D61E27CF4D2D00AAFDA1 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -73,16 +88,15 @@
 		B1BC970827BA0FA200A8DED5 /* PushUpChallenge */ = {
 			isa = PBXGroup;
 			children = (
-				B1BC970927BA0FA200A8DED5 /* AppDelegate.swift */,
-				B1BC970B27BA0FA200A8DED5 /* SceneDelegate.swift */,
+				B17C0A1F27D90A8D005D39EB /* Support */,
 				B1B7D61E27CF4D2D00AAFDA1 /* Controller */,
-				B176268827BD79F500F05028 /* MemoryManagement.swift */,
-				B191090127CDEF99004200A6 /* TimeManagement.swift */,
 				B191090327CDF30D004200A6 /* AppControl.swift */,
+				B13F691A27D47E0E00CCF605 /* Colors.swift */,
 				B191090527CF1EB2004200A6 /* Alert.swift */,
-				B1BC971227BA0FA400A8DED5 /* Assets.xcassets */,
-				B1BC971427BA0FA400A8DED5 /* LaunchScreen.storyboard */,
+				B13F691E27D70DB800CCF605 /* TestDates.swift */,
+				B13F692027D82B3800CCF605 /* nothing.swift */,
 				B1BC971727BA0FA400A8DED5 /* Info.plist */,
+				B17C0A2027D95000005D39EB /* CustomAlert.swift */,
 			);
 			path = PushUpChallenge;
 			sourceTree = "<group>";
@@ -159,12 +173,14 @@
 			files = (
 				B1BC970E27BA0FA200A8DED5 /* MainViewController.swift in Sources */,
 				B1BC970A27BA0FA200A8DED5 /* AppDelegate.swift in Sources */,
+				B13F692127D82B3800CCF605 /* nothing.swift in Sources */,
 				B1BC970C27BA0FA200A8DED5 /* SceneDelegate.swift in Sources */,
-				B191090227CDEF99004200A6 /* TimeManagement.swift in Sources */,
+				B13F691F27D70DB800CCF605 /* TestDates.swift in Sources */,
+				B13F691B27D47E0E00CCF605 /* Colors.swift in Sources */,
 				B176268727BCC70E00F05028 /* PushUpCountViewController.swift in Sources */,
 				B191090427CDF30D004200A6 /* AppControl.swift in Sources */,
 				B191090627CF1EB2004200A6 /* Alert.swift in Sources */,
-				B176268927BD79F500F05028 /* MemoryManagement.swift in Sources */,
+				B17C0A2127D95000005D39EB /* CustomAlert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
