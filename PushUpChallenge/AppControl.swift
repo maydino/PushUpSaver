@@ -16,13 +16,13 @@ class AppControl {
     var showAlertChallengeCompleted = false
 
     // Variables
-    var dayLeft = 1
-    var pushUpLeft = 10
+    var dayLeft = 30
+    var pushUpLeft = 100
     var buttonPressed = false
     
     // Constants
-    let days = 1
-    let pushUps = 10
+    let days = 30
+    let pushUps = 100
 
     // MARK: Dates
     let calendar = Calendar.current

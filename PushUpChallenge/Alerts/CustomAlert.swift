@@ -48,8 +48,8 @@ class CustomAlert: NSObject {
         
         alertView.frame = CGRect(x: 40,
                                  y: -300,
-                                 width: targetView.frame.size.width - 80,
-                                 height: 300)
+                                 width: targetView.frame.size.width*0.8,
+                                 height: targetView.frame.size.height*0.5)
             
 //        let titleLabel = UILabel(frame: CGRect(x: 0,
 //                                               y: 0,
@@ -64,11 +64,12 @@ class CustomAlert: NSObject {
         image.contentMode = .scaleAspectFit
         alertView.addSubview(image)
         
-        let messageLabel = UILabel(frame: CGRect(x: 0,
+        let messageLabel = UILabel(frame: CGRect(x: alertView.frame.size.width*0.05,
                                                  y: alertView.frame.height*0.77,
-                                                 width: alertView.frame.size.width,
-                                                 height: 20))
-        messageLabel.numberOfLines = 0
+                                                 width: alertView.frame.size.width*0.9,
+                                                 height: 30))
+        messageLabel.numberOfLines = 2
+        messageLabel.adjustsFontSizeToFitWidth = true
         messageLabel.text = message
         messageLabel.textColor = .textColor
         messageLabel.textAlignment = .center
@@ -94,7 +95,6 @@ class CustomAlert: NSObject {
             }
             
         })
-        
     }
     
     @objc func dismissAlert () {
@@ -104,8 +104,6 @@ class CustomAlert: NSObject {
         guard let targetView = myTargetView else {
             return
         }
-        
-        
         
         UIView.animate(withDuration: 0.25, animations: {
             
@@ -124,14 +122,8 @@ class CustomAlert: NSObject {
                         self.alertView.removeFromSuperview()
                         self.backgroundView.removeFromSuperview()
                     }
-            
-                    
                 })
-                
             }
-            
         })
-        
     }
-    
 }

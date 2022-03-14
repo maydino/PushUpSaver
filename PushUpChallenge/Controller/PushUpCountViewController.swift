@@ -64,14 +64,12 @@ final class PushUpCountViewController: UIViewController {
         
         if appControl.defaults.object(forKey: "firstTimeOpened") != nil {
             
-            customAlert.showAlert(with: "Hello", message: "Touch the screen with your nose.", on: self)
+            customAlert.showAlert(with: "Hello", message: "Touch the screen with your nose. You have 30 days to complete the challenge", on: self)
 
         }
-
     }
     
     func setUp () {
-
         
         pushUpButton.setTitle("\(appControl.pushUpLeft)", for: .normal)
         
@@ -94,8 +92,6 @@ final class PushUpCountViewController: UIViewController {
             infoLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20)
 
         ])
-        
-
     }
     
     @objc func pushUpButtonPressed() {
@@ -145,7 +141,6 @@ final class PushUpCountViewController: UIViewController {
 
         })
     }
-    
     
 }
 

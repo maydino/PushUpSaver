@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B13F691B27D47E0E00CCF605 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13F691A27D47E0E00CCF605 /* Colors.swift */; };
-		B13F691F27D70DB800CCF605 /* TestDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13F691E27D70DB800CCF605 /* TestDates.swift */; };
-		B13F692127D82B3800CCF605 /* nothing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13F692027D82B3800CCF605 /* nothing.swift */; };
 		B176268727BCC70E00F05028 /* PushUpCountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B176268627BCC70E00F05028 /* PushUpCountViewController.swift */; };
 		B17C0A2127D95000005D39EB /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17C0A2027D95000005D39EB /* CustomAlert.swift */; };
 		B191090427CDF30D004200A6 /* AppControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B191090327CDF30D004200A6 /* AppControl.swift */; };
@@ -23,8 +21,6 @@
 
 /* Begin PBXFileReference section */
 		B13F691A27D47E0E00CCF605 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		B13F691E27D70DB800CCF605 /* TestDates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDates.swift; sourceTree = "<group>"; };
-		B13F692027D82B3800CCF605 /* nothing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nothing.swift; sourceTree = "<group>"; };
 		B176268627BCC70E00F05028 /* PushUpCountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushUpCountViewController.swift; sourceTree = "<group>"; };
 		B17C0A2027D95000005D39EB /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		B191090327CDF30D004200A6 /* AppControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppControl.swift; sourceTree = "<group>"; };
@@ -60,6 +56,23 @@
 			path = Support;
 			sourceTree = "<group>";
 		};
+		B18A5BA627DFC17700D1B0D4 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				B191090527CF1EB2004200A6 /* Alert.swift */,
+				B17C0A2027D95000005D39EB /* CustomAlert.swift */,
+			);
+			path = Alerts;
+			sourceTree = "<group>";
+		};
+		B18A5BA727DFC19700D1B0D4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B13F691A27D47E0E00CCF605 /* Colors.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		B1B7D61E27CF4D2D00AAFDA1 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -88,15 +101,12 @@
 		B1BC970827BA0FA200A8DED5 /* PushUpChallenge */ = {
 			isa = PBXGroup;
 			children = (
-				B17C0A1F27D90A8D005D39EB /* Support */,
-				B1B7D61E27CF4D2D00AAFDA1 /* Controller */,
 				B191090327CDF30D004200A6 /* AppControl.swift */,
-				B13F691A27D47E0E00CCF605 /* Colors.swift */,
-				B191090527CF1EB2004200A6 /* Alert.swift */,
-				B13F691E27D70DB800CCF605 /* TestDates.swift */,
-				B13F692027D82B3800CCF605 /* nothing.swift */,
+				B18A5BA727DFC19700D1B0D4 /* View */,
+				B18A5BA627DFC17700D1B0D4 /* Alerts */,
+				B1B7D61E27CF4D2D00AAFDA1 /* Controller */,
+				B17C0A1F27D90A8D005D39EB /* Support */,
 				B1BC971727BA0FA400A8DED5 /* Info.plist */,
-				B17C0A2027D95000005D39EB /* CustomAlert.swift */,
 			);
 			path = PushUpChallenge;
 			sourceTree = "<group>";
@@ -173,9 +183,7 @@
 			files = (
 				B1BC970E27BA0FA200A8DED5 /* MainViewController.swift in Sources */,
 				B1BC970A27BA0FA200A8DED5 /* AppDelegate.swift in Sources */,
-				B13F692127D82B3800CCF605 /* nothing.swift in Sources */,
 				B1BC970C27BA0FA200A8DED5 /* SceneDelegate.swift in Sources */,
-				B13F691F27D70DB800CCF605 /* TestDates.swift in Sources */,
 				B13F691B27D47E0E00CCF605 /* Colors.swift in Sources */,
 				B176268727BCC70E00F05028 /* PushUpCountViewController.swift in Sources */,
 				B191090427CDF30D004200A6 /* AppControl.swift in Sources */,
@@ -324,6 +332,7 @@
 				DEVELOPMENT_TEAM = 6UY9XT6W64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PushUpChallenge/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "30 Days Push Up Challange";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -352,6 +361,7 @@
 				DEVELOPMENT_TEAM = 6UY9XT6W64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PushUpChallenge/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "30 Days Push Up Challange";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
