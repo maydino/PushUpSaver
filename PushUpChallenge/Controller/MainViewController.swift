@@ -10,10 +10,10 @@ import UIKit
 final class MainViewController: UIViewController {
     
     let appControl = AppControl()
-
+    
     // MARK: Remaining Day
     let dayStackView : UIStackView = {
-       let stackView = UIStackView()
+        let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.alignment = .center
@@ -25,7 +25,7 @@ final class MainViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Days Left"
         label.textColor = .textColor
-        label.font = .boldSystemFont(ofSize: 28)
+        label.font = .boldSystemFont(ofSize: 35)
         return label
     }()
     
@@ -33,13 +33,13 @@ final class MainViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .textColor
-        label.font = UIFont.systemFont(ofSize: 64, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: 70, weight: .bold)
         return label
     }()
     
     // MARK: Push Up Left Stack
     let pushUpStackView : UIStackView = {
-       let stackView = UIStackView()
+        let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         return stackView
@@ -52,7 +52,7 @@ final class MainViewController: UIViewController {
         label.textAlignment = .center
         label.numberOfLines = 2
         label.textColor = .textColor
-        label.font = .boldSystemFont(ofSize: 28)
+        label.font = .boldSystemFont(ofSize: 35)
         return label
     }()
     
@@ -60,7 +60,7 @@ final class MainViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .textColor
-        label.font = UIFont.systemFont(ofSize: 64, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: 70, weight: .bold)
         return label
     }()
     
@@ -79,29 +79,21 @@ final class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .backgroundColor
-
+        
         appControl.startControl()
         
         pushUpLeft.text = "\(appControl.pushUpLeft)"
         dayLeft.text = "\(appControl.dayLeft)"
-
+        
         setUp()
+        
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(appComeBackFromBackground), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
-        appControl.startControl()
-        
-        pushUpLeft.text = "\(appControl.pushUpLeft)"
-        dayLeft.text = "\(appControl.dayLeft)"
-
-        setUp()
-        
-    }
-     
+    
     func setUp() {
-                
+        
         dayStackView.addSubview(dayLeftLabel)
         dayStackView.addSubview(dayLeft)
         view.addSubview(dayStackView)
@@ -111,10 +103,10 @@ final class MainViewController: UIViewController {
         view.addSubview(pushUpStackView)
         
         view.addSubview(startWorkoutButton)
-
+        
         NSLayoutConstraint.activate([
             // MARK: Days Left Stack View
-
+            
             dayStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.bounds.height*0.15),
             dayStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
             dayStackView.widthAnchor.constraint(equalToConstant: view.bounds.width*0.8),
@@ -130,17 +122,17 @@ final class MainViewController: UIViewController {
             pushUpStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
             pushUpStackView.widthAnchor.constraint(equalToConstant: view.bounds.width*0.8),
             pushUpStackView.heightAnchor.constraint(equalToConstant: view.bounds.height*0.2),
-
+            
             pushUpLeftLabel.centerXAnchor.constraint(equalTo: pushUpStackView.centerXAnchor, constant: 0),
             pushUpLeftLabel.topAnchor.constraint(equalTo: pushUpStackView.topAnchor, constant: 0),
-
+            
             pushUpLeft.centerXAnchor.constraint(equalTo: pushUpStackView.centerXAnchor, constant: 0),
             pushUpLeft.topAnchor.constraint(equalTo: pushUpLeftLabel.bottomAnchor, constant: 10),
             
-            startWorkoutButton.topAnchor.constraint(equalTo: pushUpStackView.bottomAnchor, constant: view.bounds.height*0.18),
+            startWorkoutButton.topAnchor.constraint(equalTo: pushUpStackView.bottomAnchor, constant: view.bounds.height*0.15),
             startWorkoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
             startWorkoutButton.widthAnchor.constraint(equalToConstant: view.bounds.width*0.7),
-            startWorkoutButton.heightAnchor.constraint(equalToConstant: 70)
+            startWorkoutButton.heightAnchor.constraint(equalToConstant: view.bounds.height*0.1)
         ])
     }
     
@@ -155,11 +147,18 @@ final class MainViewController: UIViewController {
         
         appControl.startControl()
         
-                
+        
     }
     
-   
-    
+    @objc func appComeBackFromBackground() {
+        print("_____It Worked")
+        appControl.startControl()
+        
+        pushUpLeft.text = "\(appControl.pushUpLeft)"
+        dayLeft.text = "\(appControl.dayLeft)"
+        
+        
+    }
     
 }
 

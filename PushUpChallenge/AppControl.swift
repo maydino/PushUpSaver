@@ -37,9 +37,8 @@ class AppControl {
     
     func startControl() {
         
-        // First time user clicked start workout
+        // First time user pressed start workout button
         if defaults.object(forKey: "pushUp") as? Int == nil || defaults.object(forKey: "dayLeft") as? Int == nil || defaults.object(forKey: "lastDayEnter") as? Date == nil {
-            
             
             print("Step 0")
             // Push Up
@@ -50,7 +49,6 @@ class AppControl {
             defaults.set(dayLeft, forKey: "dayLeft")
             // Last day user enter the app
             defaults.set(today, forKey: "lastDayEnter")
-
 
             // MARK: Alert Challenge started!
             print("First time you open the challenge")
@@ -145,8 +143,17 @@ class AppControl {
                 
                 print("User did not completed in the time")
                 
+            } else {
+                removeUserDefaultsObjects()
+                print("Something wrong")
             }
+        } else {
+            
+            removeUserDefaultsObjects()
+            print("Something happened")
+            
         }
+        
     }
 
     private func onePushUpCompleted() {

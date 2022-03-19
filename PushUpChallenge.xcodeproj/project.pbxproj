@@ -101,12 +101,12 @@
 		B1BC970827BA0FA200A8DED5 /* PushUpChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				B1BC971727BA0FA400A8DED5 /* Info.plist */,
 				B191090327CDF30D004200A6 /* AppControl.swift */,
 				B18A5BA727DFC19700D1B0D4 /* View */,
 				B18A5BA627DFC17700D1B0D4 /* Alerts */,
 				B1B7D61E27CF4D2D00AAFDA1 /* Controller */,
 				B17C0A1F27D90A8D005D39EB /* Support */,
-				B1BC971727BA0FA400A8DED5 /* Info.plist */,
 			);
 			path = PushUpChallenge;
 			sourceTree = "<group>";
