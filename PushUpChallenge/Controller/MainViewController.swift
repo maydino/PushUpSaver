@@ -10,7 +10,7 @@ import UIKit
 final class MainViewController: UIViewController {
     
     let appControl = AppControl()
-    
+       
     // MARK: Remaining Day
     let dayStackView : UIStackView = {
         let stackView = UIStackView()
@@ -72,7 +72,7 @@ final class MainViewController: UIViewController {
         button.titleLabel?.textColor = .backgroundColor
         button.backgroundColor = .textColor
         button.layer.cornerRadius = 10
-        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(startWorkoutButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -80,17 +80,15 @@ final class MainViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .backgroundColor
         
-        appControl.startControl()
-        
-        pushUpLeft.text = "\(appControl.pushUpLeft)"
-        dayLeft.text = "\(appControl.dayLeft)"
+        pushUpLeft.text = "\(appControl.pushUpsUserDefaultsUnwrap())"
+        dayLeft.text = "\(appControl.dayLeftsUserDefaultsUnwrap())"
         
         setUp()
         
         let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(appComeBackFromBackground), name: UIApplication.didBecomeActiveNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(appCameBackFromBackground), name: UIApplication.didBecomeActiveNotification, object: nil)
+        
     }
-    
     
     func setUp() {
         
@@ -136,8 +134,7 @@ final class MainViewController: UIViewController {
         ])
     }
     
-    @objc func buttonTapped() {
-        
+    @objc func startWorkoutButtonTapped() {
         
         print("Start workout button pressed")
         let pushUpCountViewController = PushUpCountViewController()
@@ -145,18 +142,17 @@ final class MainViewController: UIViewController {
         pushUpCountViewController.modalPresentationStyle = .fullScreen
         self.present(pushUpCountViewController, animated:true, completion:nil)
         
-        appControl.startControl()
+        appControl.defaults.set(true, forKey: "challengeStarted")
         
-        
+       
     }
     
-    @objc func appComeBackFromBackground() {
-        print("_____It Worked")
-        appControl.startControl()
+    @objc func appCameBackFromBackground() {
+        print("appCameBackFromBackground")
         
-        pushUpLeft.text = "\(appControl.pushUpLeft)"
-        dayLeft.text = "\(appControl.dayLeft)"
         
+        pushUpLeft.text = "\(appControl.pushUpsUserDefaultsUnwrap())"
+        dayLeft.text = "\(appControl.dayLeftsUserDefaultsUnwrap())"
         
     }
     

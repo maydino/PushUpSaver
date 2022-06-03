@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class CustomAlert: NSObject {
+class CustomAlert {
     
     let appControl = AppControl()
     
@@ -51,13 +51,6 @@ class CustomAlert: NSObject {
                                  width: targetView.frame.size.width*0.8,
                                  height: targetView.frame.size.height*0.5)
             
-//        let titleLabel = UILabel(frame: CGRect(x: 0,
-//                                               y: 0,
-//                                               width: alertView.frame.size.width,
-//                                               height: alertView.frame.height*0.1 ))
-//        titleLabel.text = title
-//        titleLabel.textAlignment = .center
-//        alertView.addSubview(titleLabel)
         
         let image = UIImageView(frame: CGRect(x: alertView.frame.width*0.1, y: alertView.frame.height*0.1, width: alertView.frame.width*0.8, height: alertView.frame.height*0.6))
         image.image = UIImage(named: "pushUp")
@@ -100,6 +93,7 @@ class CustomAlert: NSObject {
     @objc func dismissAlert () {
         
         appControl.defaults.set("Place Holder", forKey: "firstTimeOpened")
+        //appControl.readValues(remainingPushUp: appControl.pushUps, remainingDay: appControl.days)
         
         guard let targetView = myTargetView else {
             return

@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  PushUpChallenge
 //
-//  Created by Mutlu Aydın on 2/13/22.
+//  Created by Mutlu Aydin on 2/13/22.
 //
 
 import UIKit

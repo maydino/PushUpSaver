@@ -14,7 +14,7 @@ protocol PushUpDelegate {
 
 let customAlert = CustomAlert()
 
-final class PushUpCountViewController: UIViewController {
+class PushUpCountViewController: UIViewController {
     
     var delegate: PushUpDelegate!
     
@@ -25,7 +25,6 @@ final class PushUpCountViewController: UIViewController {
     let dismissButton : UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-
         button.titleLabel?.font = UIFont.systemFont(ofSize: 40, weight: .heavy)
         button.setTitleColor(.textColor, for: .normal)
         button.setTitle("X", for: .normal)
@@ -54,15 +53,15 @@ final class PushUpCountViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .backgroundColor
-        appControl.startControl()
         setUp()
-        
+        appControl.defaults.set(appControl.today, forKey: "lastDayEnter")
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if appControl.defaults.object(forKey: "firstTimeOpened") != nil {
+        if appControl.defaults.object(forKey: "firstTimeOpened") == nil {
             
             customAlert.showAlert(with: "Hello", message: "Touch the screen with your nose. You have 30 days to complete the challenge", on: self)
 
@@ -71,7 +70,7 @@ final class PushUpCountViewController: UIViewController {
     
     func setUp () {
         
-        pushUpButton.setTitle("\(appControl.pushUpLeft)", for: .normal)
+        pushUpButton.setTitle("\(appControl.pushUpsUserDefaultsUnwrap())", for: .normal)
         
         view.addSubview(dismissButton)
         view.addSubview(pushUpButton)
@@ -97,12 +96,12 @@ final class PushUpCountViewController: UIViewController {
     @objc func pushUpButtonPressed() {
         
         appControl.buttonPressed = true
+        
+        // Shows information about the challenge
         infoLabel.text = ("\(appControl.info)")
-
         appControl.startControl()
         
         view.blink()
-
 
         if appControl.showAlertDailyPushUpCompleted == true {
             Alert.showAlert(on: self, titleText: "Congrats!", messageText: "You completed to today goal!")
@@ -121,9 +120,9 @@ final class PushUpCountViewController: UIViewController {
             appControl.showAlertChallengeTerminated = false
         }
         
-        pushUpButton.setTitle("\(appControl.pushUpLeft)", for: .normal)
+        pushUpButton.setTitle("\(appControl.pushUpsUserDefaultsUnwrap())", for: .normal)
 
-        print(appControl.pushUpLeft)
+        print(appControl.pushUpsUserDefaultsUnwrap())
     }
     
     @objc func dismissButtonPressed() {
@@ -144,6 +143,7 @@ final class PushUpCountViewController: UIViewController {
     
 }
 
+// View blink
 extension UIView{
     func blink() {
         self.backgroundColor = .white
