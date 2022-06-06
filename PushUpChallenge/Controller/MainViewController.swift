@@ -12,7 +12,7 @@ final class MainViewController: UIViewController {
     
     let appControl = AppControl()
        
-    // MARK: Remaining Day
+    // MARK: - Day Label Stack
     let dayStackView : UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -38,7 +38,7 @@ final class MainViewController: UIViewController {
         return label
     }()
     
-    // MARK: - Push Up Left Stack
+    // MARK: - Push Up Left Label Stack
     let pushUpStackView : UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -93,16 +93,8 @@ final class MainViewController: UIViewController {
         localNotificationHandle(hour: 17)
         localNotificationHandle(hour: 19)
         localNotificationHandle(hour: 21)
-
-        
-        if appControl.defaults.object(forKey: "pushUp") != nil {
-            
-            print("oops It has a valueeeeeeeeeeeeeeeeeeee")
-                
-        }
-                
     }
-    
+    //MARK: - View Constrains
     func setUp() {
         
         dayStackView.addSubview(dayLeftLabel)
@@ -146,22 +138,20 @@ final class MainViewController: UIViewController {
     }
     
     @objc func startWorkoutButtonTapped() {
-        
         print("Start workout button pressed")
+        
         let pushUpCountViewController = PushUpCountViewController()
         pushUpCountViewController.delegate = self
         pushUpCountViewController.modalPresentationStyle = .fullScreen
         self.present(pushUpCountViewController, animated:true, completion:nil)
-        
         appControl.defaults.set(true, forKey: "challengeStarted")
     }
     
     @objc func appCameBackFromBackground() {
-        print("appCameBackFromBackground")
+        print("App Came Back From Background")
         
         pushUpLeft.text = "\(appControl.pushUpsUserDefaultsUnwrap())"
         dayLeft.text = "\(appControl.dayLeftsUserDefaultsUnwrap())"
-        
     }
     
     //MARK: - Local Notification
@@ -199,13 +189,11 @@ final class MainViewController: UIViewController {
     
 }
 
-//MARK: Delegate
-
+//MARK: - Delegate Extension
 extension MainViewController: PushUpDelegate {
     func didDayChange(count: Int) {
         dayLeft.text = "\(count)"
     }
-    
     func didPushUpTapped(count: Int) {
         pushUpLeft.text = "\(count)"
     }
