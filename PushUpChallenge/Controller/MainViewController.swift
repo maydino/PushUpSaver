@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 final class MainViewController: UIViewController {
     
@@ -37,7 +38,7 @@ final class MainViewController: UIViewController {
         return label
     }()
     
-    // MARK: Push Up Left Stack
+    // MARK: - Push Up Left Stack
     let pushUpStackView : UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -88,6 +89,18 @@ final class MainViewController: UIViewController {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(appCameBackFromBackground), name: UIApplication.didBecomeActiveNotification, object: nil)
         
+        localNotificationHandle(hour: 15)
+        localNotificationHandle(hour: 17)
+        localNotificationHandle(hour: 19)
+        localNotificationHandle(hour: 21)
+
+        
+        if appControl.defaults.object(forKey: "pushUp") != nil {
+            
+            print("oops It has a valueeeeeeeeeeeeeeeeeeee")
+                
+        }
+                
     }
     
     func setUp() {
@@ -103,8 +116,6 @@ final class MainViewController: UIViewController {
         view.addSubview(startWorkoutButton)
         
         NSLayoutConstraint.activate([
-            // MARK: Days Left Stack View
-            
             dayStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.bounds.height*0.15),
             dayStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
             dayStackView.widthAnchor.constraint(equalToConstant: view.bounds.width*0.8),
@@ -143,20 +154,52 @@ final class MainViewController: UIViewController {
         self.present(pushUpCountViewController, animated:true, completion:nil)
         
         appControl.defaults.set(true, forKey: "challengeStarted")
-        
-       
     }
     
     @objc func appCameBackFromBackground() {
         print("appCameBackFromBackground")
-        
         
         pushUpLeft.text = "\(appControl.pushUpsUserDefaultsUnwrap())"
         dayLeft.text = "\(appControl.dayLeftsUserDefaultsUnwrap())"
         
     }
     
+    //MARK: - Local Notification
+    func localNotificationHandle(hour: Int) {
+        // Ask for permission
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound]) {
+            (granted, error) in
+            if(!granted) {
+                print("Permission Denied")
+            }
+        }
+        // Create the notification content
+        let content = UNMutableNotificationContent()
+        content.title = "30 Days Push Up Challange"
+        content.body =  "You have \(appControl.pushUpsUserDefaultsUnwrap()) to complete"
+        // Create the notification trigger
+        
+        var dateComponents = DateComponents()
+        dateComponents.hour = hour
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        // Create the request
+        let uuidString = UUID().uuidString
+        let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
+        // Register the request
+        if appControl.defaults.object(forKey: "pushUp") != nil {
+            center.add(request) { error in
+                if error != nil {
+                    print("oops, local notification error")
+                }
+            }
+        }
+    }
+    
 }
+
+//MARK: Delegate
 
 extension MainViewController: PushUpDelegate {
     func didDayChange(count: Int) {
@@ -166,5 +209,4 @@ extension MainViewController: PushUpDelegate {
     func didPushUpTapped(count: Int) {
         pushUpLeft.text = "\(count)"
     }
-    
 }
