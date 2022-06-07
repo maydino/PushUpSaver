@@ -69,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				B13F691A27D47E0E00CCF605 /* Colors.swift */,
+				B18A5BA627DFC17700D1B0D4 /* Alerts */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -76,6 +77,7 @@
 		B1B7D61E27CF4D2D00AAFDA1 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B191090327CDF30D004200A6 /* AppControl.swift */,
 				B1BC970D27BA0FA200A8DED5 /* MainViewController.swift */,
 				B176268627BCC70E00F05028 /* PushUpCountViewController.swift */,
 			);
@@ -101,12 +103,10 @@
 		B1BC970827BA0FA200A8DED5 /* PushUpChallenge */ = {
 			isa = PBXGroup;
 			children = (
-				B1BC971727BA0FA400A8DED5 /* Info.plist */,
-				B191090327CDF30D004200A6 /* AppControl.swift */,
 				B18A5BA727DFC19700D1B0D4 /* View */,
-				B18A5BA627DFC17700D1B0D4 /* Alerts */,
 				B1B7D61E27CF4D2D00AAFDA1 /* Controller */,
 				B17C0A1F27D90A8D005D39EB /* Support */,
+				B1BC971727BA0FA400A8DED5 /* Info.plist */,
 			);
 			path = PushUpChallenge;
 			sourceTree = "<group>";
@@ -328,7 +328,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 6UY9XT6W64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PushUpChallenge/Info.plist;
@@ -342,7 +342,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mutluaydin.PushUpChallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -357,7 +357,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 6UY9XT6W64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PushUpChallenge/Info.plist;
@@ -371,7 +371,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mutluaydin.PushUpChallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

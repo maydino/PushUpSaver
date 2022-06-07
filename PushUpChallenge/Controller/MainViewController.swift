@@ -89,10 +89,7 @@ final class MainViewController: UIViewController {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(appCameBackFromBackground), name: UIApplication.didBecomeActiveNotification, object: nil)
         
-        localNotificationHandle(hour: 15)
-        localNotificationHandle(hour: 17)
-        localNotificationHandle(hour: 19)
-        localNotificationHandle(hour: 21)
+        
     }
     //MARK: - View Constrains
     func setUp() {
@@ -145,6 +142,11 @@ final class MainViewController: UIViewController {
         pushUpCountViewController.modalPresentationStyle = .fullScreen
         self.present(pushUpCountViewController, animated:true, completion:nil)
         appControl.defaults.set(true, forKey: "challengeStarted")
+        
+        localNotificationHandle(hour: 15)
+        localNotificationHandle(hour: 17)
+        localNotificationHandle(hour: 19)
+        localNotificationHandle(hour: 21)
     }
     
     @objc func appCameBackFromBackground() {
@@ -166,7 +168,7 @@ final class MainViewController: UIViewController {
         }
         // Create the notification content
         let content = UNMutableNotificationContent()
-        content.title = "30 Days Push Up Challange"
+        content.title = "30 Days Push Up Challenge"
         content.body =  "You have \(appControl.pushUpsUserDefaultsUnwrap()) to complete"
         // Create the notification trigger
         

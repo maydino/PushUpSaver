@@ -54,7 +54,6 @@ class AppControl {
                 print("It's next day but you didn't complete all the push ups from yesterday")
 
                 removeUserDefaultsObjects()
-                defaults.set(today, forKey: "lastDayEnter")
 
                 showAlertChallengeTerminated = true
                                 
