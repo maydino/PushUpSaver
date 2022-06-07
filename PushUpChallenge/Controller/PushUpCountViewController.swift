@@ -123,6 +123,11 @@ class PushUpCountViewController: UIViewController {
         pushUpButton.setTitle("\(appControl.pushUpsUserDefaultsUnwrap())", for: .normal)
 
         print(appControl.pushUpsUserDefaultsUnwrap())
+        
+        localNotificationHandle(hour: 15, idString: "PushUpFirst")
+        localNotificationHandle(hour: 17, idString: "PushUpSecond")
+        localNotificationHandle(hour: 19, idString: "PushUpThird")
+        localNotificationHandle(hour: 21, idString: "PushUpForth")
     }
     
     @objc func dismissButtonPressed() {
@@ -137,8 +142,40 @@ class PushUpCountViewController: UIViewController {
             self.delegate.didPushUpTapped(count: self.appControl.pushUpLeft)
             self.delegate.didDayChange(count: self.appControl.dayLeft)
             
-
         })
+    }
+    
+    //MARK: - Local Notification
+        func localNotificationHandle(hour: Int, idString: String) {
+            // Ask for permission
+            let center = UNUserNotificationCenter.current()
+            center.requestAuthorization(options: [.alert, .sound]) {
+                (granted, error) in
+                if(!granted) {
+                    print("Permission Denied")
+                }
+            }
+            // Create the notification content
+            let content = UNMutableNotificationContent()
+            content.title = "30 Days Push Up Challenge"
+            content.body =  "You have \(appControl.pushUpsUserDefaultsUnwrap()) to complete"
+            // Create the notification trigger
+            
+            var dateComponents = DateComponents()
+            dateComponents.hour = hour
+            
+            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+            // Create the request
+            
+            let request = UNNotificationRequest(identifier: idString, content: content, trigger: trigger)
+            // Register the request
+            if appControl.defaults.object(forKey: "pushUp") != nil {
+                center.add(request) { error in
+                    if error != nil {
+                        print("oops, local notification error")
+                    }
+                }
+            }
     }
     
     

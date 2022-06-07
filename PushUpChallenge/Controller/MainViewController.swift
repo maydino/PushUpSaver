@@ -143,10 +143,7 @@ final class MainViewController: UIViewController {
         self.present(pushUpCountViewController, animated:true, completion:nil)
         appControl.defaults.set(true, forKey: "challengeStarted")
         
-        localNotificationHandle(hour: 15)
-        localNotificationHandle(hour: 17)
-        localNotificationHandle(hour: 19)
-        localNotificationHandle(hour: 21)
+        
     }
     
     @objc func appCameBackFromBackground() {
@@ -157,36 +154,36 @@ final class MainViewController: UIViewController {
     }
     
     //MARK: - Local Notification
-    func localNotificationHandle(hour: Int) {
-        // Ask for permission
-        let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert, .sound]) {
-            (granted, error) in
-            if(!granted) {
-                print("Permission Denied")
-            }
-        }
-        // Create the notification content
-        let content = UNMutableNotificationContent()
-        content.title = "30 Days Push Up Challenge"
-        content.body =  "You have \(appControl.pushUpsUserDefaultsUnwrap()) to complete"
-        // Create the notification trigger
-        
-        var dateComponents = DateComponents()
-        dateComponents.hour = hour
-        
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        // Create the request
-        let uuidString = UUID().uuidString
-        let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
-        // Register the request
-        if appControl.defaults.object(forKey: "pushUp") != nil {
-            center.add(request) { error in
-                if error != nil {
-                    print("oops, local notification error")
+        func localNotificationHandle(hour: Int, idString: String) {
+            // Ask for permission
+            let center = UNUserNotificationCenter.current()
+            center.requestAuthorization(options: [.alert, .sound]) {
+                (granted, error) in
+                if(!granted) {
+                    print("Permission Denied")
                 }
             }
-        }
+            // Create the notification content
+            let content = UNMutableNotificationContent()
+            content.title = "30 Days Push Up Challenge"
+            content.body =  "You have \(appControl.pushUpsUserDefaultsUnwrap()) to complete"
+            // Create the notification trigger
+            
+            var dateComponents = DateComponents()
+            dateComponents.hour = hour
+            
+            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+            // Create the request
+            
+            let request = UNNotificationRequest(identifier: idString, content: content, trigger: trigger)
+            // Register the request
+            if appControl.defaults.object(forKey: "pushUp") != nil {
+                center.add(request) { error in
+                    if error != nil {
+                        print("oops, local notification error")
+                    }
+                }
+            }
     }
     
 }
