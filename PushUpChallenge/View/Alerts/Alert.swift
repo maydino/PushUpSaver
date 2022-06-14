@@ -19,7 +19,9 @@ struct Alert {
         let alert = UIAlertController(title: titleText, message: messageText, preferredStyle: .alert)
         
         // add an action (button)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        vc.dismiss(animated: true, completion: nil)
+       
         
         // show the alert
         vc.present(alert, animated: true)

@@ -17,165 +17,113 @@ class AppControl {
     var showAlertChallengeCompleted = false
 
     // MARK: - Variables
-    var dayLeft = 30
-    var pushUpLeft = 100
+    var dayLeft: Int = 30
+    var pushUpLeft: Int = 100
     var buttonPressed = false
-    var challengeStarted = false
-    
-    // MARK: - Constants
-    let days = 30
-    let pushUps = 100
-
+ 
     // MARK: - Dates
     let calendar = Calendar.current
-    let today = Date()
-    var difference = 0
+//    let localTime = LocalTime()
+    let dateManagement = DateManagement()
     
     // MARK: - Memory
-    let defaults = UserDefaults.standard
-    
-    // MARK: - User Information
-    var info = ""
-    
+    let userDefault = UserDefaultString()
+        
     func startControl() {
+//        print(localTime.localTimeFunc())
         
-        dayLeft = dayLeftsUserDefaultsUnwrap()
-        pushUpLeft = pushUpsUserDefaultsUnwrap()
+        dayLeft = userDefault.dayLeftsUserDefaultsUnwrap()
+        print(dayLeft)
+        pushUpLeft = userDefault.pushUpsUserDefaultsUnwrap()
+        print(pushUpLeft)
         
-        if todayCheck() == true {
-            
-            forSameDayPushUpButtonPressedActions()                            
-                
-        } else if tomorrowCheck() == true {
-            
-            if pushUpLeft > 0 {
-                // MARK: Alert! Sorry, you didn't finish challenge in time, terminated the challenge, return the main view
-                
-                print("It's next day but you didn't complete all the push ups from yesterday")
-
-                removeUserDefaultsObjects()
-
-                showAlertChallengeTerminated = true
-                                
-            } else {
-                
-                print("Next day, challenge continue...")
-
-                defaults.set(today, forKey: "lastDayEnter")
-
-                startControl()
-            }
-            
-        } else {
-            // MARK: Alert! Sorry, you didn't finish challenge in time, terminated the challenge, return the main view
-
-            removeUserDefaultsObjects()
-            defaults.set(today, forKey: "lastDayEnter")
-
-            showAlertChallengeTerminated = true
+        if userDefault.challengeStartedUnwrap() {
                         
-        }
-    }
-    
-    private func forSameDayPushUpButtonPressedActions () {
-        
-        if pushUpsUserDefaultsUnwrap() > 0 {
-            
-            if buttonPressed == true {
-                onePushUpCompleted()
-                buttonPressed = false
+            if dateManagement.todayDateFunc() == userDefault.todayUserDefaultsUnwrap() {
                 
-                if pushUpLeft == 0 && dayLeft > 0 {
-                    showAlertDailyPushUpCompleted = true
-                    info = "Challenge Completed for today..."
-                } else if pushUpLeft == 0 && dayLeft == 0 {
+                forSameDayPushUpButtonPressedActions()
+            
+            } else if dateManagement.tomorrowDateFunc() == userDefault.tomorrowUserDefaultsUnwrap() && dayLeft > 0 {
+                
+                if pushUpLeft > 0 {
+                    // MARK: Alert! Sorry, you didn't finish challenge in time, terminated the challenge, return the main view
+                    showAlertChallengeTerminated = true
+
+                    print("It's next day but you didn't complete all the push ups from yesterday")
+
+                    userDefault.removeUserDefaultsObjects()
                     
-                    removeUserDefaultsObjects()
-                    showAlertChallengeCompleted = true
                 } else {
-                    info = "Challenge Started"
+                    
+                    print("Next day, challenge continue...")
+                    userDefault.defaults.set(dateManagement.todayDateFunc(), forKey: userDefault.todayUserDefault)
+                    userDefault.defaults.set(dateManagement.tomorrowDateFunc, forKey: userDefault.tomorrowUserDefault)
+                    
+                    userDefault.defaults.set(100,forKey: userDefault.pushUpString)
+                    dayLeft -= 1
+                    userDefault.defaults.set(dayLeft, forKey: userDefault.dayLeftString)
+                    startControl()
                 }
+                
+            } else {
+                // MARK: Alert! Sorry, you didn't finish challenge in time, terminated the challenge, return the main view
+                showAlertChallengeTerminated = true
+
+                userDefault.removeUserDefaultsObjects()
+
             }
         }
-    }
-
-    //MARK: - PushUp Counter
-    private func onePushUpCompleted() {
-        pushUpLeft -= 1
-        setPushUpDefaultValue()
-        setDayLeftDefaultValue()
     }
     
     //MARK: - Save data to user defaults
-    
     func setPushUpDefaultValue () {
-        defaults.setValue(pushUpLeft, forKey: "pushUp")
+        userDefault.defaults.setValue(pushUpLeft, forKey: userDefault.pushUpString)
     }
     
     func setDayLeftDefaultValue () {
-        defaults.setValue(dayLeft, forKey: "dayLEft")
+        userDefault.defaults.setValue(dayLeft, forKey: userDefault.dayLeftString)
+    }
+    
+    private func forSameDayPushUpButtonPressedActions () {
+        if buttonPressed == true {
+            buttonPressed = false
+            if pushUpLeft > 0 && dayLeft > 0 {
+                pushUpLeft -= 1
+                    setPushUpDefaultValue()
+                    setDayLeftDefaultValue()
+            } else if pushUpLeft == 0 && dayLeft > 0 {
+                showAlertDailyPushUpCompleted = true
+            } else if pushUpLeft == 0 && dayLeft == 0 {
+                userDefault.removeUserDefaultsObjects()
+                showAlertChallengeCompleted = true
+            } else {
+                print("something wrong at forSameDayPushUpButtonPressedActions")
+            }
+        } else {
+            print("Challenge Started")
+        }
     }
     
     //MARK: - Dates Control
-    func tomorrowCheck() -> Bool {
-        
-        let tomorrow = lastDayEnterUnwrap().addingTimeInterval(86400)
-        
-        if calendar.isDateInToday(tomorrow) {
-            print("tomorrow is tomorrow")
-            return true
-        } else {
-            return false
-        }
-    }
+//    func tomorrowCheck() -> Bool {
+//        print("Tomorrow Check \(calendar.isDateInYesterday(userDefault.lastDayEnterUnwrap()))")
+//        return calendar.isDateInYesterday(userDefault.lastDayEnterUnwrap())
+//    }
+//
+//    func todayCheck() -> Bool {
+//        // Return true if we still in same day
+//        print("Today Check \(calendar.isDateInToday(userDefault.lastDayEnterUnwrap()))")
+//        return calendar.isDateInToday(userDefault.lastDayEnterUnwrap())
+//    }
+//
     
-    func todayCheck() -> Bool {
-        
-        if let lastDayEnterUser = defaults.object(forKey: "lastDayEnter") as? Date {
-            let todayCheckBool = calendar.isDateInToday(lastDayEnterUser)
-            print("Today is today \(todayCheckBool)")
-            return(todayCheckBool)
-        }
-        return false
-    }
     
-    //MARK: - Unwrap the user defaults
-    func lastDayEnterUnwrap () -> Date {
-        if let lastDayEnter = defaults.object(forKey: "lastDayEnter") as? Date {
-            return lastDayEnter
-        } else {
-            return today
-        }
-    }
     
-    func pushUpsUserDefaultsUnwrap () -> Int {
-        if let pushUpsDefault = defaults.object(forKey: "pushUp") as? Int {
-            print("1111")
-            return pushUpsDefault
-        } else {
-            return pushUps
-        }
-    }
     
-    func dayLeftsUserDefaultsUnwrap () -> Int {
-        if let dayLeftDefault = defaults.object(forKey: "dayLeft") as? Int {
-            print("22222")
-            return dayLeftDefault
-        } else {
-            return days
-        }
-    }
     
-    //MARK: - Clean all the user defaults data
-    func removeUserDefaultsObjects() {
-        
-        defaults.removeObject(forKey: "lastDayEnter")
-        defaults.removeObject(forKey: "pushUp")
-        defaults.removeObject(forKey: "dayLeft")
-        defaults.removeObject(forKey: "firstTimeOpened")
-        print("All User Defaults Objects Removed")
     
-    }
+    
+    
     
 }
 

@@ -10,7 +10,8 @@ import UIKit
 
 class CustomAlert {
     
-    let appControl = AppControl()
+    let userDefault = UserDefaultString()
+    let userDefaultString = UserDefaultString()
     
     struct Constants {
         static let backgroundAlphaTo: CGFloat = 0.6
@@ -91,9 +92,7 @@ class CustomAlert {
     }
     
     @objc func dismissAlert () {
-        
-        appControl.defaults.set("Place Holder", forKey: "firstTimeOpened")
-        //appControl.readValues(remainingPushUp: appControl.pushUps, remainingDay: appControl.days)
+                
         
         guard let targetView = myTargetView else {
             return

@@ -8,9 +8,10 @@
 import UIKit
 import UserNotifications
 
-final class MainViewController: UIViewController {
+class MainViewController: UIViewController {
     
     let appControl = AppControl()
+    let userDefault = UserDefaultString()
        
     // MARK: - Day Label Stack
     let dayStackView : UIStackView = {
@@ -26,7 +27,7 @@ final class MainViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Days Left"
         label.textColor = .textColor
-        label.font = .boldSystemFont(ofSize: 35)
+        label.font = UIFont(name: "Baskerville", size: 40)
         return label
     }()
     
@@ -34,7 +35,7 @@ final class MainViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .textColor
-        label.font = UIFont.systemFont(ofSize: 70, weight: .bold)
+        label.font = UIFont(name: "Baskerville", size: 60)
         return label
     }()
     
@@ -53,15 +54,15 @@ final class MainViewController: UIViewController {
         label.textAlignment = .center
         label.numberOfLines = 2
         label.textColor = .textColor
-        label.font = .boldSystemFont(ofSize: 35)
+        label.font = UIFont(name: "Baskerville", size: 40)
         return label
     }()
     
-    let pushUpLeft : UILabel = {
+    let pushUpLeftCountLabel : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .textColor
-        label.font = UIFont.systemFont(ofSize: 70, weight: .bold)
+        label.font = UIFont(name: "Baskerville", size: 60)
         return label
     }()
     
@@ -69,10 +70,10 @@ final class MainViewController: UIViewController {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Start Workout", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 30, weight: .bold)
-        button.titleLabel?.textColor = .backgroundColor
+        button.titleLabel?.font = UIFont(name: "Baskerville", size: 30)
+        button.setTitleColor(.backgroundColor, for: .normal)
         button.backgroundColor = .textColor
-        button.layer.cornerRadius = 10
+        button.layer.cornerRadius = 20
         button.addTarget(self, action: #selector(startWorkoutButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -81,16 +82,47 @@ final class MainViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .backgroundColor
         
-        pushUpLeft.text = "\(appControl.pushUpsUserDefaultsUnwrap())"
-        dayLeft.text = "\(appControl.dayLeftsUserDefaultsUnwrap())"
+        AppUtility.lockOrientation(.portrait)
+        
+        appControl.startControl()
+
+        pushUpLeftCountLabel.text = "\(appControl.pushUpLeft)"
+        dayLeft.text = "\(appControl.dayLeft)"
         
         setUp()
         
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(appCameBackFromBackground), name: UIApplication.didBecomeActiveNotification, object: nil)
         
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        appControl.startControl()
+
+        pushUpLeftCountLabel.text = "\(appControl.pushUpLeft)"
+        dayLeft.text = "\(appControl.dayLeft)"
+    }
+
+    
+    @objc func startWorkoutButtonTapped() {
+        print("Start workout button pressed")
+        
+        let pushUpCountViewController = PushUpCountViewController()
+        pushUpCountViewController.delegate = self
+        pushUpCountViewController.modalPresentationStyle = .fullScreen
+        self.present(pushUpCountViewController, animated:true, completion:nil)
+        
+     }
+    
+    @objc func appCameBackFromBackground() {
+        print("App Came Back From Background")
+        appControl.startControl()
+
+                
+        pushUpLeftCountLabel.text = "\(appControl.pushUpLeft)"
+        dayLeft.text = "\(appControl.dayLeft)"
         
     }
+    
     //MARK: - View Constrains
     func setUp() {
         
@@ -99,7 +131,7 @@ final class MainViewController: UIViewController {
         view.addSubview(dayStackView)
         
         pushUpStackView.addSubview(pushUpLeftLabel)
-        pushUpStackView.addSubview(pushUpLeft)
+        pushUpStackView.addSubview(pushUpLeftCountLabel)
         view.addSubview(pushUpStackView)
         
         view.addSubview(startWorkoutButton)
@@ -124,8 +156,8 @@ final class MainViewController: UIViewController {
             pushUpLeftLabel.centerXAnchor.constraint(equalTo: pushUpStackView.centerXAnchor, constant: 0),
             pushUpLeftLabel.topAnchor.constraint(equalTo: pushUpStackView.topAnchor, constant: 0),
             
-            pushUpLeft.centerXAnchor.constraint(equalTo: pushUpStackView.centerXAnchor, constant: 0),
-            pushUpLeft.topAnchor.constraint(equalTo: pushUpLeftLabel.bottomAnchor, constant: 10),
+            pushUpLeftCountLabel.centerXAnchor.constraint(equalTo: pushUpStackView.centerXAnchor, constant: 0),
+            pushUpLeftCountLabel.topAnchor.constraint(equalTo: pushUpLeftLabel.bottomAnchor, constant: 10),
             
             startWorkoutButton.topAnchor.constraint(equalTo: pushUpStackView.bottomAnchor, constant: view.bounds.height*0.15),
             startWorkoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
@@ -134,27 +166,10 @@ final class MainViewController: UIViewController {
         ])
     }
     
-    @objc func startWorkoutButtonTapped() {
-        print("Start workout button pressed")
-        
-        let pushUpCountViewController = PushUpCountViewController()
-        pushUpCountViewController.delegate = self
-        pushUpCountViewController.modalPresentationStyle = .fullScreen
-        self.present(pushUpCountViewController, animated:true, completion:nil)
-        appControl.defaults.set(true, forKey: "challengeStarted")
-        
-        
-    }
-    
-    @objc func appCameBackFromBackground() {
-        print("App Came Back From Background")
-        
-        pushUpLeft.text = "\(appControl.pushUpsUserDefaultsUnwrap())"
-        dayLeft.text = "\(appControl.dayLeftsUserDefaultsUnwrap())"
-    }
-    
     
 }
+
+
 
 //MARK: - Delegate Extension
 extension MainViewController: PushUpDelegate {
@@ -162,6 +177,6 @@ extension MainViewController: PushUpDelegate {
         dayLeft.text = "\(count)"
     }
     func didPushUpTapped(count: Int) {
-        pushUpLeft.text = "\(count)"
+        pushUpLeftCountLabel.text = "\(count)"
     }
 }

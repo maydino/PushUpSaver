@@ -18,9 +18,12 @@ class PushUpCountViewController: UIViewController {
     
     var delegate: PushUpDelegate!
     
-    var appControl = AppControl()
+    let appControl = AppControl()
+    let userDefault = UserDefaultString()
+//    let localTime = LocalTime()
+    let dateManagement = DateManagement()
     
-    var alert = Alert()
+    let alert = Alert()
     
     let dismissButton : UIButton = {
         let button = UIButton()
@@ -35,46 +38,69 @@ class PushUpCountViewController: UIViewController {
     let pushUpButton : UIButton = {
         var button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 100, weight: .bold)
+        button.titleLabel?.font = UIFont(name: "Baskerville", size: 100)
         button.setTitleColor(.textColor, for: .normal)
         button.addTarget(self, action: #selector(pushUpButtonPressed), for: .touchUpInside)
         return button
-    }()
-    
-    let infoLabel : UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .textColor
-        label.font = .boldSystemFont(ofSize: 18)
-        label.textAlignment = .center
-        return label
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .backgroundColor
         setUp()
-        appControl.defaults.set(appControl.today, forKey: "lastDayEnter")
-
+        
+        let notificationCenter = NotificationCenter.default
+            notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
+        
+        if userDefault.defaults.object(forKey: userDefault.firstTimeOpened) == nil {
+            
+            customAlert.showAlert(with: "Hello", message: "Touch the screen with your nose. You have 30 days to complete the challenge. Challenge started.", on: self)
+            userDefault.defaults.set("Place Holder", forKey: userDefault.firstTimeOpened)
+            
+            //MARK: - Last day set is in here
+            userDefault.defaults.set(dateManagement.todayDateFunc(), forKey: userDefault.todayUserDefault)
+            print("local time set pushupVC")
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if appControl.defaults.object(forKey: "firstTimeOpened") == nil {
+        if userDefault.defaults.object(forKey: userDefault.firstTimeOpened) == nil {
             
-            customAlert.showAlert(with: "Hello", message: "Touch the screen with your nose. You have 30 days to complete the challenge", on: self)
+            customAlert.showAlert(with: "Hello", message: "Touch the screen with your nose. You have 30 days to complete the challenge. Challenge started.", on: self)
+            userDefault.defaults.set("Place Holder", forKey: userDefault.firstTimeOpened)
+            
+            //MARK: - Last day set is in here
+            userDefault.defaults.set(dateManagement.todayDateFunc(), forKey: userDefault.todayUserDefault)
+            print("local time set pushupVC")
+            
+            if appControl.showAlertDailyPushUpCompleted == true {
+                Alert.showAlert(on: self, titleText: "Congrats!", messageText: "You completed to today goal!")
+                appControl.showAlertDailyPushUpCompleted = false
 
+            } else if appControl.showAlertChallengeTerminated == true {
+                Alert.showAlert(on: self, titleText: "Oops!", messageText: "You did a great job, but the challenge didn't complete in time. Therefore, you will start from day 30...")
+                appControl.showAlertChallengeTerminated = false
+                
+
+            } else if appControl.showAlertChallengeCompleted == true {
+                Alert.showAlert(on: self, titleText: "Wow!", messageText: """
+                Congratulation!
+                🎉🎉🎉
+                You completed the challenge!
+                """)
+                appControl.showAlertChallengeTerminated = false
+            }
         }
     }
     
     func setUp () {
         
-        pushUpButton.setTitle("\(appControl.pushUpsUserDefaultsUnwrap())", for: .normal)
+        pushUpButton.setTitle("\(userDefault.pushUpsUserDefaultsUnwrap())", for: .normal)
         
         view.addSubview(dismissButton)
         view.addSubview(pushUpButton)
-        view.addSubview(infoLabel)
         
         NSLayoutConstraint.activate([
             
@@ -87,47 +113,45 @@ class PushUpCountViewController: UIViewController {
             pushUpButton.widthAnchor.constraint(equalToConstant: view.bounds.width),
             pushUpButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
             
-            infoLabel.widthAnchor.constraint(equalToConstant: view.bounds.width),
-            infoLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20)
-
         ])
     }
     
     @objc func pushUpButtonPressed() {
         
         appControl.buttonPressed = true
+        // Shows information about the challenge..
         
-        // Shows information about the challenge
-        infoLabel.text = ("\(appControl.info)")
+        userDefault.defaults.set(true, forKey: userDefault.challengeStarted)
+        
         appControl.startControl()
         
         view.blink()
 
-        if appControl.showAlertDailyPushUpCompleted == true {
-            Alert.showAlert(on: self, titleText: "Congrats!", messageText: "You completed to today goal!")
-            appControl.showAlertDailyPushUpCompleted = false
+        
+        
+        pushUpButton.setTitle("\(userDefault.pushUpsUserDefaultsUnwrap())", for: .normal)
 
-        } else if appControl.showAlertChallengeTerminated == true {
-            Alert.showAlert(on: self, titleText: "Oops!", messageText: "You did a great job but the challenge didn't complete in time. You will start from day 1...")
-            appControl.showAlertChallengeTerminated = false
-
-        } else if appControl.showAlertChallengeCompleted == true {
-            Alert.showAlert(on: self, titleText: "Wow!", messageText: """
-            Congratulation!
-            🎉🎉🎉
-            You completed the challenge!
-            """)
-            appControl.showAlertChallengeTerminated = false
+        print(userDefault.pushUpsUserDefaultsUnwrap())
+        
+        if userDefault.defaults.object(forKey: userDefault.todayUserDefault) == nil {
+            userDefault.defaults.set(dateManagement.todayDateFunc(), forKey: userDefault.todayUserDefault)
         }
+                
+    }
+    
+    @objc func appMovedToBackground() {
+        print("appMovedToBackground")
         
-        pushUpButton.setTitle("\(appControl.pushUpsUserDefaultsUnwrap())", for: .normal)
-
-        print(appControl.pushUpsUserDefaultsUnwrap())
-        
-        localNotificationHandle(hour: 15, idString: "PushUpFirst")
-        localNotificationHandle(hour: 17, idString: "PushUpSecond")
-        localNotificationHandle(hour: 19, idString: "PushUpThird")
-        localNotificationHandle(hour: 21, idString: "PushUpForth")
+        if userDefault.defaults.object(forKey: userDefault.pushUpString) != nil {
+            localNotificationHandle(hour: 15, idString: "PushUpOne")
+            localNotificationHandle(hour: 16, idString: "PushUpTwo")
+            localNotificationHandle(hour: 17, idString: "PushUpThird")
+            localNotificationHandle(hour: 18, idString: "PushUpForth")
+            localNotificationHandle(hour: 19, idString: "PushUpFive")
+            localNotificationHandle(hour: 20, idString: "PushUpSix")
+            localNotificationHandle(hour: 21, idString: "PushUpSeven")
+            localNotificationHandle(hour: 22, idString: "PushUpEight")
+        }
     }
     
     @objc func dismissButtonPressed() {
@@ -158,7 +182,7 @@ class PushUpCountViewController: UIViewController {
             // Create the notification content
             let content = UNMutableNotificationContent()
             content.title = "30 Days Push Up Challenge"
-            content.body =  "You have \(appControl.pushUpsUserDefaultsUnwrap()) to complete"
+            content.body =  "You have push ups to complete"
             // Create the notification trigger
             
             var dateComponents = DateComponents()
@@ -169,7 +193,7 @@ class PushUpCountViewController: UIViewController {
             
             let request = UNNotificationRequest(identifier: idString, content: content, trigger: trigger)
             // Register the request
-            if appControl.defaults.object(forKey: "pushUp") != nil {
+            if userDefault.defaults.object(forKey: userDefault.pushUpString) != nil {
                 center.add(request) { error in
                     if error != nil {
                         print("oops, local notification error")
@@ -177,7 +201,6 @@ class PushUpCountViewController: UIViewController {
                 }
             }
     }
-    
     
 }
 
