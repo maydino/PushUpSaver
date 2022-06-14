@@ -9,8 +9,7 @@ import Foundation
 
 
 class UserDefaultString {
-        
-//    let lastDayEnter = "lastDayEnter"
+    
     let pushUpString = "pushUp"
     let dayLeftString = "dayLeft"
     let firstTimeOpened = "firstTimeOpened"
@@ -19,7 +18,6 @@ class UserDefaultString {
     let tomorrowUserDefault = "tomorrowUserDefault"
     
     let defaults = UserDefaults.standard
-//    let localTime = LocalTime()
     
     func challengeStartedUnwrap() -> Bool {
         
@@ -31,17 +29,15 @@ class UserDefaultString {
     //MARK: - Clean all the user defaults data
     func removeUserDefaultsObjects() {
         
-//        defaults.removeObject(forKey: lastDayEnter)
         defaults.removeObject(forKey: pushUpString)
         defaults.removeObject(forKey: dayLeftString)
         defaults.removeObject(forKey: firstTimeOpened)
         defaults.removeObject(forKey: challengeStarted)
         defaults.removeObject(forKey: todayUserDefault)
         defaults.removeObject(forKey: tomorrowUserDefault)
-
-
+        
         print("All User Defaults Objects Removed")
-    
+        
     }
     
     func dayLeftsUserDefaultsUnwrap () -> Int {
@@ -78,16 +74,4 @@ class UserDefaultString {
             return "empty"
         }
     }
-    
-//    func lastDayEnterUnwrap() -> Date {
-//        //Unwrap the lastDayEnter user default
-//        print("lastDayEnterUnwrap ran")
-//        if let lastDayEnterUnwrap = defaults.object(forKey: lastDayEnter) as? Date {
-//            print("User default last day enter worked")
-//            return lastDayEnterUnwrap
-//        } else {
-//            print("new local time")
-//            return localTime.localTimeFunc()
-//        }
-//    }
 }

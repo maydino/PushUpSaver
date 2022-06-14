@@ -126,8 +126,6 @@ class PushUpCountViewController: UIViewController {
         appControl.startControl()
         
         view.blink()
-
-        
         
         pushUpButton.setTitle("\(userDefault.pushUpsUserDefaultsUnwrap())", for: .normal)
 

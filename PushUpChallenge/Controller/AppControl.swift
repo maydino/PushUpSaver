@@ -104,27 +104,6 @@ class AppControl {
         }
     }
     
-    //MARK: - Dates Control
-//    func tomorrowCheck() -> Bool {
-//        print("Tomorrow Check \(calendar.isDateInYesterday(userDefault.lastDayEnterUnwrap()))")
-//        return calendar.isDateInYesterday(userDefault.lastDayEnterUnwrap())
-//    }
-//
-//    func todayCheck() -> Bool {
-//        // Return true if we still in same day
-//        print("Today Check \(calendar.isDateInToday(userDefault.lastDayEnterUnwrap()))")
-//        return calendar.isDateInToday(userDefault.lastDayEnterUnwrap())
-//    }
-//
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
 
 

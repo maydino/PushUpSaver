@@ -48,8 +48,7 @@ class CustomAlert {
                                  y: targetView.frame.height*0.25,
                                  width: targetView.frame.size.width*0.8,
                                  height: targetView.frame.size.height*0.5)
-            
-        
+                    
         let image = UIImageView(frame: CGRect(x: alertView.frame.width*0.1, y: alertView.frame.height*0.1, width: alertView.frame.width*0.8, height: alertView.frame.height*0.6))
         image.image = UIImage(named: "pushUp")
         image.contentMode = .scaleAspectFit
@@ -84,13 +83,11 @@ class CustomAlert {
                     self.alertView.center = targetView.center
                 })
             }
-            
         })
     }
     
     @objc func dismissAlert () {
                 
-        
         guard let targetView = myTargetView else {
             return
         }

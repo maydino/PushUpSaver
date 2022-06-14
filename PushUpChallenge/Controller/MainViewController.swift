@@ -165,11 +165,7 @@ class MainViewController: UIViewController {
             startWorkoutButton.heightAnchor.constraint(equalToConstant: view.bounds.height*0.1)
         ])
     }
-    
-    
 }
-
-
 
 //MARK: - Delegate Extension
 extension MainViewController: PushUpDelegate {

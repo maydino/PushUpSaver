@@ -26,7 +26,5 @@ struct Alert {
         // show the alert
         vc.present(alert, animated: true)
         
-    }
-    
-    
+    }    
 }
