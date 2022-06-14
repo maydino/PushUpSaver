@@ -10,9 +10,6 @@ import UIKit
 
 class CustomAlert {
     
-    let userDefault = UserDefaultString()
-    let userDefaultString = UserDefaultString()
-    
     struct Constants {
         static let backgroundAlphaTo: CGFloat = 0.6
         
@@ -47,8 +44,8 @@ class CustomAlert {
         targetView.addSubview(backgroundView)
         targetView.addSubview(alertView)
         
-        alertView.frame = CGRect(x: 40,
-                                 y: -300,
+        alertView.frame = CGRect(x: targetView.frame.width*0.1,
+                                 y: targetView.frame.height*0.25,
                                  width: targetView.frame.size.width*0.8,
                                  height: targetView.frame.size.height*0.5)
             
