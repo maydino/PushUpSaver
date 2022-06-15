@@ -8,6 +8,7 @@
 import UIKit
 import UserNotifications
 
+
 class AppControl {
     
     // MARK: - Alerts
@@ -15,22 +16,22 @@ class AppControl {
     var showAlertChallengeTerminated = false
     var showAlertDailyPushUpCompleted = false
     var showAlertChallengeCompleted = false
-
+    
     // MARK: - Variables
     var dayLeft: Int = 30
     var pushUpLeft: Int = 100
     var buttonPressed = false
- 
+    
     // MARK: - Dates
     let calendar = Calendar.current
-//    let localTime = LocalTime()
+    //    let localTime = LocalTime()
     let dateManagement = DateManagement()
     
     // MARK: - Memory
     let userDefault = UserDefaultString()
-        
+    
     func startControl() {
-//        print(localTime.localTimeFunc())
+        //        print(localTime.localTimeFunc())
         
         dayLeft = userDefault.dayLeftsUserDefaultsUnwrap()
         print(dayLeft)
@@ -38,19 +39,19 @@ class AppControl {
         print(pushUpLeft)
         
         if userDefault.challengeStartedUnwrap() {
-                        
+            
             if dateManagement.todayDateFunc() == userDefault.todayUserDefaultsUnwrap() {
                 
                 forSameDayPushUpButtonPressedActions()
-            
+                
             } else if dateManagement.tomorrowDateFunc() == userDefault.tomorrowUserDefaultsUnwrap() && dayLeft > 0 {
                 
                 if pushUpLeft > 0 {
                     // MARK: Alert! Sorry, you didn't finish challenge in time, terminated the challenge, return the main view
                     showAlertChallengeTerminated = true
-
+                    
                     print("It's next day but you didn't complete all the push ups from yesterday")
-
+                    
                     userDefault.removeUserDefaultsObjects()
                     
                 } else {
@@ -68,9 +69,9 @@ class AppControl {
             } else {
                 // MARK: Alert! Sorry, you didn't finish challenge in time, terminated the challenge, return the main view
                 showAlertChallengeTerminated = true
-
+                
                 userDefault.removeUserDefaultsObjects()
-
+                
             }
         }
     }
@@ -87,15 +88,20 @@ class AppControl {
     private func forSameDayPushUpButtonPressedActions () {
         if buttonPressed == true {
             buttonPressed = false
+            
             if pushUpLeft > 0 && dayLeft > 0 {
                 pushUpLeft -= 1
-                    setPushUpDefaultValue()
-                    setDayLeftDefaultValue()
+                setPushUpDefaultValue()
+                setDayLeftDefaultValue()
             } else if pushUpLeft == 0 && dayLeft > 0 {
+                
                 showAlertDailyPushUpCompleted = true
+                
             } else if pushUpLeft == 0 && dayLeft == 0 {
+                
                 userDefault.removeUserDefaultsObjects()
                 showAlertChallengeCompleted = true
+                
             } else {
                 print("something wrong at forSameDayPushUpButtonPressedActions")
             }
@@ -107,4 +113,4 @@ class AppControl {
 }
 
 
-     
+

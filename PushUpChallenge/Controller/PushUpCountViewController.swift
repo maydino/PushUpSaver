@@ -10,20 +10,19 @@ import UIKit
 protocol PushUpDelegate {
     func didPushUpTapped(count: Int)
     func didDayChange(count: Int)
+    
 }
 
-let customAlert = CustomAlert()
-
 class PushUpCountViewController: UIViewController {
+    
+    let customAlert = CustomAlert()
+    let alert = Alert()
     
     var delegate: PushUpDelegate!
     
     let appControl = AppControl()
     let userDefault = UserDefaultString()
-//    let localTime = LocalTime()
     let dateManagement = DateManagement()
-    
-    let alert = Alert()
     
     let dismissButton : UIButton = {
         let button = UIButton()
@@ -34,7 +33,7 @@ class PushUpCountViewController: UIViewController {
         button.addTarget(self, action: #selector(dismissButtonPressed), for: .touchUpInside)
         return button
     }()
-
+    
     let pushUpButton : UIButton = {
         var button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -43,14 +42,14 @@ class PushUpCountViewController: UIViewController {
         button.addTarget(self, action: #selector(pushUpButtonPressed), for: .touchUpInside)
         return button
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .backgroundColor
         setUp()
         
         let notificationCenter = NotificationCenter.default
-            notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
         
         if userDefault.defaults.object(forKey: userDefault.firstTimeOpened) == nil {
             
@@ -68,31 +67,17 @@ class PushUpCountViewController: UIViewController {
         
         if userDefault.defaults.object(forKey: userDefault.firstTimeOpened) == nil {
             
+            //MARK: Custom Alert Shows
             customAlert.showAlert(with: "Hello", message: "Touch the screen with your nose. You have 30 days to complete the challenge. Challenge started.", on: self)
+            //MARK: User default for understand the challenge started
             userDefault.defaults.set("Place Holder", forKey: userDefault.firstTimeOpened)
             
-            //MARK: - Last day set is in here
+            //MARK: - User last open the app this date!
             userDefault.defaults.set(dateManagement.todayDateFunc(), forKey: userDefault.todayUserDefault)
             print("local time set pushupVC")
-            
-            if appControl.showAlertDailyPushUpCompleted == true {
-                Alert.showAlert(on: self, titleText: "Congrats!", messageText: "You completed to today goal!")
-                appControl.showAlertDailyPushUpCompleted = false
-
-            } else if appControl.showAlertChallengeTerminated == true {
-                Alert.showAlert(on: self, titleText: "Oops!", messageText: "You did a great job, but the challenge didn't complete in time. Therefore, you will start from day 30...")
-                appControl.showAlertChallengeTerminated = false
-                
-
-            } else if appControl.showAlertChallengeCompleted == true {
-                Alert.showAlert(on: self, titleText: "Wow!", messageText: """
-                Congratulation!
-                🎉🎉🎉
-                You completed the challenge!
-                """)
-                appControl.showAlertChallengeTerminated = false
-            }
         }
+        
+        
     }
     
     func setUp () {
@@ -108,7 +93,7 @@ class PushUpCountViewController: UIViewController {
             dismissButton.heightAnchor.constraint(equalToConstant: 70),
             dismissButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             dismissButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
-           
+            
             pushUpButton.topAnchor.constraint(equalTo: dismissButton.bottomAnchor, constant: 0),
             pushUpButton.widthAnchor.constraint(equalToConstant: view.bounds.width),
             pushUpButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
@@ -128,11 +113,29 @@ class PushUpCountViewController: UIViewController {
         view.blink()
         
         pushUpButton.setTitle("\(userDefault.pushUpsUserDefaultsUnwrap())", for: .normal)
-
+        
         print(userDefault.pushUpsUserDefaultsUnwrap())
         
         if userDefault.defaults.object(forKey: userDefault.todayUserDefault) == nil {
             userDefault.defaults.set(dateManagement.todayDateFunc(), forKey: userDefault.todayUserDefault)
+        }
+        
+        //MARK: - ALERTS
+        if appControl.showAlertDailyPushUpCompleted == true {
+            Alert.showAlert(on: self, titleText: "Congrats!", messageText: "You completed to today goal!")
+            appControl.showAlertDailyPushUpCompleted = false
+            
+        } else if appControl.showAlertChallengeTerminated == true {
+            Alert.showAlert(on: self, titleText: "Oops!", messageText: "You did a great job, but the challenge didn't complete in time. Therefore, you will start from day 30...")
+            appControl.showAlertChallengeTerminated = false
+            
+        } else if appControl.showAlertChallengeCompleted == true {
+            Alert.showAlert(on: self, titleText: "Wow!", messageText: """
+                Congratulation!
+                🎉🎉🎉
+                You completed the challenge!
+                """)
+            appControl.showAlertChallengeTerminated = false
         }
                 
     }
@@ -168,41 +171,40 @@ class PushUpCountViewController: UIViewController {
     }
     
     //MARK: - Local Notification
-        func localNotificationHandle(hour: Int, idString: String) {
-            // Ask for permission
-            let center = UNUserNotificationCenter.current()
-            center.requestAuthorization(options: [.alert, .sound]) {
-                (granted, error) in
-                if(!granted) {
-                    print("Permission Denied")
+    func localNotificationHandle(hour: Int, idString: String) {
+        // Ask for permission
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound]) {
+            (granted, error) in
+            if(!granted) {
+                print("Permission Denied")
+            }
+        }
+        // Create the notification content
+        let content = UNMutableNotificationContent()
+        content.title = "30 Days Push Up Challenge"
+        content.body =  "You have push ups to complete"
+        // Create the notification trigger
+        
+        var dateComponents = DateComponents()
+        dateComponents.hour = hour
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        // Create the request
+        
+        let request = UNNotificationRequest(identifier: idString, content: content, trigger: trigger)
+        // Register the request
+        if userDefault.defaults.object(forKey: userDefault.pushUpString) != nil {
+            center.add(request) { error in
+                if error != nil {
+                    print("oops, local notification error")
                 }
             }
-            // Create the notification content
-            let content = UNMutableNotificationContent()
-            content.title = "30 Days Push Up Challenge"
-            content.body =  "You have push ups to complete"
-            // Create the notification trigger
-            
-            var dateComponents = DateComponents()
-            dateComponents.hour = hour
-            
-            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-            // Create the request
-            
-            let request = UNNotificationRequest(identifier: idString, content: content, trigger: trigger)
-            // Register the request
-            if userDefault.defaults.object(forKey: userDefault.pushUpString) != nil {
-                center.add(request) { error in
-                    if error != nil {
-                        print("oops, local notification error")
-                    }
-                }
-            }
+        }
     }
-    
 }
 
-// View blink
+//MARK: - View blink
 extension UIView{
     func blink() {
         self.backgroundColor = .white

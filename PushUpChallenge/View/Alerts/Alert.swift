@@ -18,13 +18,15 @@ struct Alert {
         // create the alert
         let alert = UIAlertController(title: titleText, message: messageText, preferredStyle: .alert)
         
-        // add an action (button)
-        
-        vc.dismiss(animated: true, completion: nil)
-       
+        alert.addAction(.init(title: "OK", style: .cancel, handler: { _ in
+            vc.dismiss(animated: true, completion: nil)
+
+        }))
         
         // show the alert
         vc.present(alert, animated: true)
         
-    }    
+    }
+    
+    
 }
