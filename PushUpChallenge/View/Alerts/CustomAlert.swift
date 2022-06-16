@@ -12,7 +12,6 @@ class CustomAlert {
     
     struct Constants {
         static let backgroundAlphaTo: CGFloat = 0.6
-        
     }
     
     private let  backgroundView: UIView = {
@@ -41,6 +40,7 @@ class CustomAlert {
         myTargetView = targetView
         
         backgroundView.frame = targetView.bounds
+        
         targetView.addSubview(backgroundView)
         targetView.addSubview(alertView)
         
@@ -68,7 +68,7 @@ class CustomAlert {
         let button = UIButton(frame: CGRect(x: 0, y: alertView.frame.size.height-50, width: alertView.frame.size.width, height: 50))
         button.setTitle("Dismiss", for: .normal)
         button.setTitleColor(.blue, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.addTarget(self,
                          action: #selector(dismissAlert),
                          for: .touchUpInside)
@@ -94,10 +94,10 @@ class CustomAlert {
         
         UIView.animate(withDuration: 0.25, animations: {
             
-            self.alertView.frame = CGRect(x: 40,
-                                          y: targetView.frame.size.height,
-                                     width: targetView.frame.size.width - 80,
-                                     height: 300)
+            self.alertView.frame = CGRect(x: targetView.frame.width/2,
+                                          y: targetView.frame.height,
+                                     width: 0,
+                                     height: 0)
             
         }, completion: { done in
             if done {

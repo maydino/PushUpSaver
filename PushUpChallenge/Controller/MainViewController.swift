@@ -14,7 +14,7 @@ class MainViewController: UIViewController {
     let userDefault = UserDefaultString()
        
     // MARK: - Day Label Stack
-    let dayStackView : UIStackView = {
+    private let dayStackView : UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
@@ -22,55 +22,55 @@ class MainViewController: UIViewController {
         return stackView
     }()
     
-    let dayLeftLabel : UILabel = {
+    private let dayLeftLabel : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Days Left"
         label.textColor = .textColor
-        label.font = UIFont(name: "Baskerville", size: 40)
+        label.font = UIFont(name: String.textFont, size: 40)
         return label
     }()
     
-    let dayLeft : UILabel = {
+    private let dayLeft : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .textColor
-        label.font = UIFont(name: "Baskerville", size: 60)
+        label.font = UIFont(name: String.textFont, size: 60)
         return label
     }()
     
     // MARK: - Push Up Left Label Stack
-    let pushUpStackView : UIStackView = {
+    private let pushUpStackView : UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         return stackView
     }()
     
-    let pushUpLeftLabel : UILabel = {
+    private let pushUpLeftLabel : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Push Up \n Left Today"
         label.textAlignment = .center
         label.numberOfLines = 2
         label.textColor = .textColor
-        label.font = UIFont(name: "Baskerville", size: 40)
+        label.font = UIFont(name: String.textFont, size: 40)
         return label
     }()
     
-    let pushUpLeftCountLabel : UILabel = {
+    private let pushUpLeftCountLabel : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .textColor
-        label.font = UIFont(name: "Baskerville", size: 60)
+        label.font = UIFont(name: String.textFont, size: 60)
         return label
     }()
     
-    let startWorkoutButton: UIButton = {
+    private let startWorkoutButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Start Workout", for: .normal)
-        button.titleLabel?.font = UIFont(name: "Baskerville", size: 30)
+        button.titleLabel?.font = UIFont(name: .textFont, size: 30)
         button.setTitleColor(.backgroundColor, for: .normal)
         button.backgroundColor = .textColor
         button.layer.cornerRadius = 20
@@ -85,7 +85,7 @@ class MainViewController: UIViewController {
         AppUtility.lockOrientation(.portrait)
         
         appControl.startControl()
-
+        
         pushUpLeftCountLabel.text = "\(appControl.pushUpLeft)"
         dayLeft.text = "\(appControl.dayLeft)"
         
@@ -116,6 +116,11 @@ class MainViewController: UIViewController {
     @objc func appCameBackFromBackground() {
         print("App Came Back From Background")
         appControl.startControl()
+        
+        if appControl.showAlertChallengeTerminated == true {
+            Alert.showAlert(on: self, titleText: "Oops!", messageText: "You did a great job, but the challenge didn't complete in time. Therefore, you will start from day 30...")
+            appControl.showAlertChallengeTerminated = false
+        }
 
                 
         pushUpLeftCountLabel.text = "\(appControl.pushUpLeft)"

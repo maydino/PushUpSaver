@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		B1298F1B285400FF0044D053 /* UserDefaultString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1298F1A285400FF0044D053 /* UserDefaultString.swift */; };
-		B13F691B27D47E0E00CCF605 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13F691A27D47E0E00CCF605 /* Colors.swift */; };
+		B13F691B27D47E0E00CCF605 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13F691A27D47E0E00CCF605 /* AppColors.swift */; };
 		B176268727BCC70E00F05028 /* PushUpCountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B176268627BCC70E00F05028 /* PushUpCountViewController.swift */; };
 		B17C0A2127D95000005D39EB /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17C0A2027D95000005D39EB /* CustomAlert.swift */; };
 		B191090427CDF30D004200A6 /* AppControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B191090327CDF30D004200A6 /* AppControl.swift */; };
 		B191090627CF1EB2004200A6 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B191090527CF1EB2004200A6 /* Alert.swift */; };
 		B19A71E72857E0B300180560 /* DateManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19A71E62857E0B300180560 /* DateManagement.swift */; };
+		B1A8FEDF285AD13000C53CD4 /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A8FEDE285AD13000C53CD4 /* AppFont.swift */; };
 		B1BC970A27BA0FA200A8DED5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BC970927BA0FA200A8DED5 /* AppDelegate.swift */; };
 		B1BC970C27BA0FA200A8DED5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BC970B27BA0FA200A8DED5 /* SceneDelegate.swift */; };
 		B1BC970E27BA0FA200A8DED5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BC970D27BA0FA200A8DED5 /* MainViewController.swift */; };
@@ -23,12 +24,13 @@
 
 /* Begin PBXFileReference section */
 		B1298F1A285400FF0044D053 /* UserDefaultString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultString.swift; sourceTree = "<group>"; };
-		B13F691A27D47E0E00CCF605 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		B13F691A27D47E0E00CCF605 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		B176268627BCC70E00F05028 /* PushUpCountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushUpCountViewController.swift; sourceTree = "<group>"; };
 		B17C0A2027D95000005D39EB /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		B191090327CDF30D004200A6 /* AppControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppControl.swift; sourceTree = "<group>"; };
 		B191090527CF1EB2004200A6 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		B19A71E62857E0B300180560 /* DateManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManagement.swift; sourceTree = "<group>"; };
+		B1A8FEDE285AD13000C53CD4 /* AppFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
 		B1BC970627BA0FA200A8DED5 /* PushUpChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PushUpChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1BC970927BA0FA200A8DED5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1BC970B27BA0FA200A8DED5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -54,7 +56,8 @@
 			children = (
 				B19A71E62857E0B300180560 /* DateManagement.swift */,
 				B1298F1A285400FF0044D053 /* UserDefaultString.swift */,
-				B13F691A27D47E0E00CCF605 /* Colors.swift */,
+				B13F691A27D47E0E00CCF605 /* AppColors.swift */,
+				B1A8FEDE285AD13000C53CD4 /* AppFont.swift */,
 				B1BC970B27BA0FA200A8DED5 /* SceneDelegate.swift */,
 				B1BC970927BA0FA200A8DED5 /* AppDelegate.swift */,
 				B1BC971227BA0FA400A8DED5 /* Assets.xcassets */,
@@ -188,10 +191,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1298F1B285400FF0044D053 /* UserDefaultString.swift in Sources */,
+				B1A8FEDF285AD13000C53CD4 /* AppFont.swift in Sources */,
 				B1BC970E27BA0FA200A8DED5 /* MainViewController.swift in Sources */,
 				B1BC970A27BA0FA200A8DED5 /* AppDelegate.swift in Sources */,
 				B1BC970C27BA0FA200A8DED5 /* SceneDelegate.swift in Sources */,
-				B13F691B27D47E0E00CCF605 /* Colors.swift in Sources */,
+				B13F691B27D47E0E00CCF605 /* AppColors.swift in Sources */,
 				B176268727BCC70E00F05028 /* PushUpCountViewController.swift in Sources */,
 				B191090427CDF30D004200A6 /* AppControl.swift in Sources */,
 				B191090627CF1EB2004200A6 /* Alert.swift in Sources */,
@@ -336,7 +340,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 6UY9XT6W64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PushUpChallenge/Info.plist;
@@ -366,7 +370,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 6UY9XT6W64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PushUpChallenge/Info.plist;

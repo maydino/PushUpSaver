@@ -24,14 +24,12 @@ class AppControl {
     
     // MARK: - Dates
     let calendar = Calendar.current
-    //    let localTime = LocalTime()
     let dateManagement = DateManagement()
     
     // MARK: - Memory
     let userDefault = UserDefaultString()
-    
+        
     func startControl() {
-        //        print(localTime.localTimeFunc())
         
         dayLeft = userDefault.dayLeftsUserDefaultsUnwrap()
         print(dayLeft)
@@ -45,9 +43,11 @@ class AppControl {
                 forSameDayPushUpButtonPressedActions()
                 
             } else if dateManagement.tomorrowDateFunc() == userDefault.tomorrowUserDefaultsUnwrap() && dayLeft > 0 {
+                print("Next day")
                 
                 if pushUpLeft > 0 {
                     // MARK: Alert! Sorry, you didn't finish challenge in time, terminated the challenge, return the main view
+                    
                     showAlertChallengeTerminated = true
                     
                     print("It's next day but you didn't complete all the push ups from yesterday")
@@ -55,10 +55,9 @@ class AppControl {
                     userDefault.removeUserDefaultsObjects()
                     
                 } else {
-                    
                     print("Next day, challenge continue...")
                     userDefault.defaults.set(dateManagement.todayDateFunc(), forKey: userDefault.todayUserDefault)
-                    userDefault.defaults.set(dateManagement.tomorrowDateFunc, forKey: userDefault.tomorrowUserDefault)
+                    userDefault.defaults.set(dateManagement.tomorrowDateFunc(), forKey: userDefault.tomorrowUserDefault)
                     
                     userDefault.defaults.set(100,forKey: userDefault.pushUpString)
                     dayLeft -= 1
@@ -94,7 +93,7 @@ class AppControl {
                 setPushUpDefaultValue()
                 setDayLeftDefaultValue()
             } else if pushUpLeft == 0 && dayLeft > 0 {
-                
+     
                 showAlertDailyPushUpCompleted = true
                 
             } else if pushUpLeft == 0 && dayLeft == 0 {

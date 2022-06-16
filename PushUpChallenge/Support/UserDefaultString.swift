@@ -18,6 +18,7 @@ class UserDefaultString {
     let tomorrowUserDefault = "tomorrowUserDefault"
     
     let defaults = UserDefaults.standard
+    let dateManagement = DateManagement()
     
     func challengeStartedUnwrap() -> Bool {
         
@@ -63,7 +64,7 @@ class UserDefaultString {
             print("todayUserDefault ran")
             return todayUserDefault
         } else {
-            return "empty"
+            return dateManagement.todayDateFunc()
         }
     }
     func tomorrowUserDefaultsUnwrap () -> String {
@@ -71,7 +72,7 @@ class UserDefaultString {
             print("tomorrowUserDefault ran")
             return tomorrowUserDefault
         } else {
-            return "empty"
+            return dateManagement.tomorrowDateFunc()
         }
     }
 }

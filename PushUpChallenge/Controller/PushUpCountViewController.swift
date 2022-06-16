@@ -24,7 +24,7 @@ class PushUpCountViewController: UIViewController {
     let userDefault = UserDefaultString()
     let dateManagement = DateManagement()
     
-    let dismissButton : UIButton = {
+    private let dismissButton : UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.titleLabel?.font = UIFont.systemFont(ofSize: 40, weight: .heavy)
@@ -34,10 +34,10 @@ class PushUpCountViewController: UIViewController {
         return button
     }()
     
-    let pushUpButton : UIButton = {
+    private let pushUpButton : UIButton = {
         var button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.titleLabel?.font = UIFont(name: "Baskerville", size: 100)
+        button.titleLabel?.font = UIFont(name: String.textFont, size: 120)
         button.setTitleColor(.textColor, for: .normal)
         button.addTarget(self, action: #selector(pushUpButtonPressed), for: .touchUpInside)
         return button
@@ -58,7 +58,6 @@ class PushUpCountViewController: UIViewController {
             
             //MARK: - Last day set is in here
             userDefault.defaults.set(dateManagement.todayDateFunc(), forKey: userDefault.todayUserDefault)
-            print("local time set pushupVC")
         }
     }
     
@@ -74,10 +73,7 @@ class PushUpCountViewController: UIViewController {
             
             //MARK: - User last open the app this date!
             userDefault.defaults.set(dateManagement.todayDateFunc(), forKey: userDefault.todayUserDefault)
-            print("local time set pushupVC")
         }
-        
-        
     }
     
     func setUp () {
@@ -113,9 +109,7 @@ class PushUpCountViewController: UIViewController {
         view.blink()
         
         pushUpButton.setTitle("\(userDefault.pushUpsUserDefaultsUnwrap())", for: .normal)
-        
-        print(userDefault.pushUpsUserDefaultsUnwrap())
-        
+                
         if userDefault.defaults.object(forKey: userDefault.todayUserDefault) == nil {
             userDefault.defaults.set(dateManagement.todayDateFunc(), forKey: userDefault.todayUserDefault)
         }
@@ -135,9 +129,8 @@ class PushUpCountViewController: UIViewController {
                 🎉🎉🎉
                 You completed the challenge!
                 """)
-            appControl.showAlertChallengeTerminated = false
+            appControl.showAlertChallengeCompleted = false
         }
-                
     }
     
     @objc func appMovedToBackground() {
@@ -145,20 +138,13 @@ class PushUpCountViewController: UIViewController {
         
         if userDefault.defaults.object(forKey: userDefault.pushUpString) != nil {
             localNotificationHandle(hour: 15, idString: "PushUpOne")
-            localNotificationHandle(hour: 16, idString: "PushUpTwo")
-            localNotificationHandle(hour: 17, idString: "PushUpThird")
-            localNotificationHandle(hour: 18, idString: "PushUpForth")
-            localNotificationHandle(hour: 19, idString: "PushUpFive")
-            localNotificationHandle(hour: 20, idString: "PushUpSix")
-            localNotificationHandle(hour: 21, idString: "PushUpSeven")
-            localNotificationHandle(hour: 22, idString: "PushUpEight")
+            localNotificationHandle(hour: 18, idString: "PushUpTwo")
+            localNotificationHandle(hour: 21, idString: "PushUpThree")
         }
     }
     
     @objc func dismissButtonPressed() {
-        
         dismissVCFunc()
-        
         print("dismiss button pressed")
     }
     
@@ -166,7 +152,6 @@ class PushUpCountViewController: UIViewController {
         self.view.window?.rootViewController?.dismiss(animated: true, completion: {
             self.delegate.didPushUpTapped(count: self.appControl.pushUpLeft)
             self.delegate.didDayChange(count: self.appControl.dayLeft)
-            
         })
     }
     
@@ -184,15 +169,16 @@ class PushUpCountViewController: UIViewController {
         let content = UNMutableNotificationContent()
         content.title = "30 Days Push Up Challenge"
         content.body =  "You have push ups to complete"
-        // Create the notification trigger
         
+        // Create the notification trigger
         var dateComponents = DateComponents()
         dateComponents.hour = hour
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+
         // Create the request
-        
         let request = UNNotificationRequest(identifier: idString, content: content, trigger: trigger)
+        
         // Register the request
         if userDefault.defaults.object(forKey: userDefault.pushUpString) != nil {
             center.add(request) { error in

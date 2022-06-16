@@ -18,7 +18,6 @@ struct DateManagement {
         dateFormatter.timeZone = .current
         dateFormatter.locale = .current
         dateFormatter.dateFormat = "MM-dd-yyyy"
-        print(dateFormatter.string(from: today))
         return dateFormatter.string(from: today)
     }
     
@@ -27,8 +26,8 @@ struct DateManagement {
         dateFormatter.timeZone = .current
         dateFormatter.locale = .current
         dateFormatter.dateFormat = "MM-dd-yyyy"
-        print(dateFormatter.string(from: tomorrow))
         return dateFormatter.string(from: tomorrow)
+        
     }
     
 }
