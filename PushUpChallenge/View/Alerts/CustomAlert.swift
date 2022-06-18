@@ -16,14 +16,13 @@ class CustomAlert {
     
     private let  backgroundView: UIView = {
         let backgroundView = UIView()
-        backgroundView.backgroundColor = .black
         backgroundView.alpha = 0
         return backgroundView
     }()
     
     private let alertView: UIView = {
         let alert = UIView()
-        alert.backgroundColor = .white
+        alert.backgroundColor = .textColor
         alert.layer.masksToBounds = true
         alert.layer.cornerRadius = 12
         return alert
@@ -58,16 +57,17 @@ class CustomAlert {
                                                  y: alertView.frame.height*0.77,
                                                  width: alertView.frame.size.width*0.9,
                                                  height: 30))
-        messageLabel.numberOfLines = 2
+        messageLabel.numberOfLines = 3
         messageLabel.adjustsFontSizeToFitWidth = true
         messageLabel.text = message
-        messageLabel.textColor = .textColor
+        messageLabel.textColor = .backgroundColor
         messageLabel.textAlignment = .center
+        messageLabel.font = UIFont(name: String.textFont, size: 25)
         alertView.addSubview(messageLabel)
         
-        let button = UIButton(frame: CGRect(x: 0, y: alertView.frame.size.height-50, width: alertView.frame.size.width, height: 50))
+        let button = UIButton(frame: CGRect(x: 0, y: alertView.frame.size.height-40, width: alertView.frame.size.width, height: 40))
         button.setTitle("Dismiss", for: .normal)
-        button.setTitleColor(.blue, for: .normal)
+        button.setTitleColor(.backgroundColor, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.addTarget(self,
                          action: #selector(dismissAlert),

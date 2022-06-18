@@ -8,7 +8,7 @@
 import UIKit
 import UserNotifications
 
-class MainViewController: UIViewController {
+final class MainViewController: UIViewController {
     
     let appControl = AppControl()
     let userDefault = UserDefaultString()

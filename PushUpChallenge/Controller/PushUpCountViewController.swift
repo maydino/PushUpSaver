@@ -13,7 +13,7 @@ protocol PushUpDelegate {
     
 }
 
-class PushUpCountViewController: UIViewController {
+final class PushUpCountViewController: UIViewController {
     
     let customAlert = CustomAlert()
     let alert = Alert()
