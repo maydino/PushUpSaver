@@ -13,8 +13,8 @@
 		B176268727BCC70E00F05028 /* PushUpCountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B176268627BCC70E00F05028 /* PushUpCountViewController.swift */; };
 		B17C0A2127D95000005D39EB /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17C0A2027D95000005D39EB /* CustomAlert.swift */; };
 		B18F8997285FB4A700CFD844 /* First.png in Resources */ = {isa = PBXBuildFile; fileRef = B18F8994285FB4A700CFD844 /* First.png */; };
-		B18F8998285FB4A700CFD844 /* Apple iPhone 11 Pro Max Screenshot 1.png in Resources */ = {isa = PBXBuildFile; fileRef = B18F8995285FB4A700CFD844 /* Apple iPhone 11 Pro Max Screenshot 1.png */; };
-		B18F8999285FB4A700CFD844 /* Apple iPhone 11 Pro Max Screenshot 2.png in Resources */ = {isa = PBXBuildFile; fileRef = B18F8996285FB4A700CFD844 /* Apple iPhone 11 Pro Max Screenshot 2.png */; };
+		B18F8998285FB4A700CFD844 /* Second.png in Resources */ = {isa = PBXBuildFile; fileRef = B18F8995285FB4A700CFD844 /* Second.png */; };
+		B18F8999285FB4A700CFD844 /* Third.png in Resources */ = {isa = PBXBuildFile; fileRef = B18F8996285FB4A700CFD844 /* Third.png */; };
 		B191090427CDF30D004200A6 /* AppControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B191090327CDF30D004200A6 /* AppControl.swift */; };
 		B191090627CF1EB2004200A6 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B191090527CF1EB2004200A6 /* Alert.swift */; };
 		B19A71E72857E0B300180560 /* DateManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19A71E62857E0B300180560 /* DateManagement.swift */; };
@@ -33,8 +33,8 @@
 		B176268627BCC70E00F05028 /* PushUpCountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushUpCountViewController.swift; sourceTree = "<group>"; };
 		B17C0A2027D95000005D39EB /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		B18F8994285FB4A700CFD844 /* First.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = First.png; sourceTree = "<group>"; };
-		B18F8995285FB4A700CFD844 /* Apple iPhone 11 Pro Max Screenshot 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Apple iPhone 11 Pro Max Screenshot 1.png"; sourceTree = "<group>"; };
-		B18F8996285FB4A700CFD844 /* Apple iPhone 11 Pro Max Screenshot 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Apple iPhone 11 Pro Max Screenshot 2.png"; sourceTree = "<group>"; };
+		B18F8995285FB4A700CFD844 /* Second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Second.png; sourceTree = "<group>"; };
+		B18F8996285FB4A700CFD844 /* Third.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Third.png; sourceTree = "<group>"; };
 		B191090327CDF30D004200A6 /* AppControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppControl.swift; sourceTree = "<group>"; };
 		B191090527CF1EB2004200A6 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		B19A71E62857E0B300180560 /* DateManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManagement.swift; sourceTree = "<group>"; };
@@ -63,9 +63,8 @@
 			isa = PBXGroup;
 			children = (
 				B18F8994285FB4A700CFD844 /* First.png */,
-				B18F8995285FB4A700CFD844 /* Apple iPhone 11 Pro Max Screenshot 1.png */,
-				B18F8996285FB4A700CFD844 /* Apple iPhone 11 Pro Max Screenshot 2.png */,
-				B1643F56285F0B5500FE1EEF /* README.md */,
+				B18F8995285FB4A700CFD844 /* Second.png */,
+				B18F8996285FB4A700CFD844 /* Third.png */,
 			);
 			path = ReadmeImages;
 			sourceTree = "<group>";
@@ -115,6 +114,7 @@
 		B1BC96FD27BA0FA100A8DED5 = {
 			isa = PBXGroup;
 			children = (
+				B1643F56285F0B5500FE1EEF /* README.md */,
 				B1643F58285F0D8100FE1EEF /* ReadmeImages */,
 				B1BC970827BA0FA200A8DED5 /* PushUpChallenge */,
 				B1BC970727BA0FA200A8DED5 /* Products */,
@@ -199,10 +199,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1643F57285F0B5500FE1EEF /* README.md in Resources */,
-				B18F8999285FB4A700CFD844 /* Apple iPhone 11 Pro Max Screenshot 2.png in Resources */,
+				B18F8999285FB4A700CFD844 /* Third.png in Resources */,
 				B1BC971627BA0FA400A8DED5 /* LaunchScreen.storyboard in Resources */,
 				B1BC971327BA0FA400A8DED5 /* Assets.xcassets in Resources */,
-				B18F8998285FB4A700CFD844 /* Apple iPhone 11 Pro Max Screenshot 1.png in Resources */,
+				B18F8998285FB4A700CFD844 /* Second.png in Resources */,
 				B18F8997285FB4A700CFD844 /* First.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
