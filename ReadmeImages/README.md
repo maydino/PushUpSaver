@@ -21,5 +21,5 @@ An iOS app for helping count 100 push up daily.
 
 
 
-![Main!](ReadmeImages/Apple iPhone 11 Pro Max Screenshot 0.jpg)
+![Main!](First.png)
 
