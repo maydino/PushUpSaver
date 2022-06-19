@@ -19,15 +19,15 @@ An iOS app for helping count 100 push up daily.
 * Delegate Implementation
 * Property Observer
 
+<div style="width:60px ; height:100px">
+![](ReadmeImages/First.png)
+<div>
 
-
-![](ReadmeImages/First.png | width=100)
 
 ![](ReadmeImages/Second.png | width=100)
 
 ![](ReadmeImages/Third.png | width=100)
 
-
-<script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+<img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white>
 <div class="badge-base LI-profile-badge" data-locale="tr_TR" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity="mutluaydin" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://www.linkedin.com/in/mutluaydin?trk=profile-badge">Mutlu Aydin</a></div>
               
