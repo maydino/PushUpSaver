@@ -21,12 +21,13 @@ An iOS app for helping count 100 push up daily.
 
 
 
-![First!](ReadmeImages/First.png)
+![](ReadmeImages/First.png | width=100)
 
-![Second!](ReadmeImages/Second.png)
+![](ReadmeImages/Second.png | width=100)
 
-![Third!](ReadmeImages/Third.png)
+![](ReadmeImages/Third.png | width=100)
 
 
+<script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
 <div class="badge-base LI-profile-badge" data-locale="tr_TR" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity="mutluaydin" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://www.linkedin.com/in/mutluaydin?trk=profile-badge">Mutlu Aydin</a></div>
               
