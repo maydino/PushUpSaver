@@ -25,5 +25,4 @@ An iOS app for helping count 100 push up daily.
 
 
               
-[![Linkedin](https://i.stack.imgur.com/gVE0j.png) LinkedIn]([https://www.linkedin.com/](https://www.linkedin.com/in/mutluaydin/))
-&nbsp;
+![Linkedin](https://i.stack.imgur.com/gVE0j.png) [LinkedIn](https://www.linkedin.com/in/mutluaydin/)
