@@ -8,11 +8,9 @@
 import UIKit
 import UserNotifications
 
-
 class AppControl {
     
     // MARK: - Alerts
-    let alert = Alert()
     var showAlertChallengeTerminated = false
     var showAlertDailyPushUpCompleted = false
     var showAlertChallengeCompleted = false
@@ -93,9 +91,13 @@ class AppControl {
                 setPushUpDefaultValue()
                 setDayLeftDefaultValue()
             } else if pushUpLeft == 0 && dayLeft > 0 {
-     
-                showAlertDailyPushUpCompleted = true
                 
+                // Remove all local notifications
+                UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+                
+                // Daily push-up completed
+                showAlertDailyPushUpCompleted = true
+
             } else if pushUpLeft == 0 && dayLeft == 0 {
                 
                 userDefault.removeUserDefaultsObjects()

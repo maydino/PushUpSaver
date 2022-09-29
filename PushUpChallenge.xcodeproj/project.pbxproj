@@ -7,16 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B11AEAF928E3B13900CC076D /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11AEAF828E3B13900CC076D /* MainTabBarController.swift */; };
 		B1298F1B285400FF0044D053 /* UserDefaultString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1298F1A285400FF0044D053 /* UserDefaultString.swift */; };
+		B13E887628E504AC0062D8D0 /* PUCTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13E887528E504AC0062D8D0 /* PUCTitleLabel.swift */; };
+		B13E887828E504D60062D8D0 /* PUCLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13E887728E504D60062D8D0 /* PUCLabel.swift */; };
+		B13E887A28E5050D0062D8D0 /* PUCButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13E887928E5050D0062D8D0 /* PUCButton.swift */; };
+		B13E887C28E505A50062D8D0 /* PUCTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13E887B28E505A50062D8D0 /* PUCTextField.swift */; };
+		B13E887E28E505F60062D8D0 /* PUCBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13E887D28E505F60062D8D0 /* PUCBodyLabel.swift */; };
+		B13E888128E507E30062D8D0 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13E888028E507E30062D8D0 /* UIViewController+Ext.swift */; };
+		B13E888328E512080062D8D0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13E888228E512080062D8D0 /* SettingsViewController.swift */; };
 		B13F691B27D47E0E00CCF605 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13F691A27D47E0E00CCF605 /* AppColors.swift */; };
 		B1643F57285F0B5500FE1EEF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B1643F56285F0B5500FE1EEF /* README.md */; };
-		B176268727BCC70E00F05028 /* PushUpCountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B176268627BCC70E00F05028 /* PushUpCountViewController.swift */; };
-		B17C0A2127D95000005D39EB /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17C0A2027D95000005D39EB /* CustomAlert.swift */; };
+		B176268727BCC70E00F05028 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B176268627BCC70E00F05028 /* StatsViewController.swift */; };
 		B18F8997285FB4A700CFD844 /* First.png in Resources */ = {isa = PBXBuildFile; fileRef = B18F8994285FB4A700CFD844 /* First.png */; };
 		B18F8998285FB4A700CFD844 /* Second.png in Resources */ = {isa = PBXBuildFile; fileRef = B18F8995285FB4A700CFD844 /* Second.png */; };
 		B18F8999285FB4A700CFD844 /* Third.png in Resources */ = {isa = PBXBuildFile; fileRef = B18F8996285FB4A700CFD844 /* Third.png */; };
 		B191090427CDF30D004200A6 /* AppControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B191090327CDF30D004200A6 /* AppControl.swift */; };
-		B191090627CF1EB2004200A6 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B191090527CF1EB2004200A6 /* Alert.swift */; };
+		B191090627CF1EB2004200A6 /* PUCAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B191090527CF1EB2004200A6 /* PUCAlert.swift */; };
 		B19A71E72857E0B300180560 /* DateManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19A71E62857E0B300180560 /* DateManagement.swift */; };
 		B1A8FEDF285AD13000C53CD4 /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A8FEDE285AD13000C53CD4 /* AppFont.swift */; };
 		B1BC970A27BA0FA200A8DED5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BC970927BA0FA200A8DED5 /* AppDelegate.swift */; };
@@ -27,16 +34,23 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B11AEAF828E3B13900CC076D /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		B1298F1A285400FF0044D053 /* UserDefaultString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultString.swift; sourceTree = "<group>"; };
+		B13E887528E504AC0062D8D0 /* PUCTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PUCTitleLabel.swift; sourceTree = "<group>"; };
+		B13E887728E504D60062D8D0 /* PUCLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PUCLabel.swift; sourceTree = "<group>"; };
+		B13E887928E5050D0062D8D0 /* PUCButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PUCButton.swift; sourceTree = "<group>"; };
+		B13E887B28E505A50062D8D0 /* PUCTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PUCTextField.swift; sourceTree = "<group>"; };
+		B13E887D28E505F60062D8D0 /* PUCBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PUCBodyLabel.swift; sourceTree = "<group>"; };
+		B13E888028E507E30062D8D0 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
+		B13E888228E512080062D8D0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		B13F691A27D47E0E00CCF605 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		B1643F56285F0B5500FE1EEF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		B176268627BCC70E00F05028 /* PushUpCountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushUpCountViewController.swift; sourceTree = "<group>"; };
-		B17C0A2027D95000005D39EB /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
+		B176268627BCC70E00F05028 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		B18F8994285FB4A700CFD844 /* First.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = First.png; sourceTree = "<group>"; };
 		B18F8995285FB4A700CFD844 /* Second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Second.png; sourceTree = "<group>"; };
 		B18F8996285FB4A700CFD844 /* Third.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Third.png; sourceTree = "<group>"; };
 		B191090327CDF30D004200A6 /* AppControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppControl.swift; sourceTree = "<group>"; };
-		B191090527CF1EB2004200A6 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		B191090527CF1EB2004200A6 /* PUCAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PUCAlert.swift; sourceTree = "<group>"; };
 		B19A71E62857E0B300180560 /* DateManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManagement.swift; sourceTree = "<group>"; };
 		B1A8FEDE285AD13000C53CD4 /* AppFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
 		B1BC970627BA0FA200A8DED5 /* PushUpChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PushUpChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,6 +73,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B11AEAFA28E3B3F100CC076D /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				B19A71E62857E0B300180560 /* DateManagement.swift */,
+				B1298F1A285400FF0044D053 /* UserDefaultString.swift */,
+				B13F691A27D47E0E00CCF605 /* AppColors.swift */,
+				B1A8FEDE285AD13000C53CD4 /* AppFont.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		B13E887F28E507B30062D8D0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B13E888028E507E30062D8D0 /* UIViewController+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		B1643F58285F0D8100FE1EEF /* ReadmeImages */ = {
 			isa = PBXGroup;
 			children = (
@@ -72,10 +105,6 @@
 		B17C0A1F27D90A8D005D39EB /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				B19A71E62857E0B300180560 /* DateManagement.swift */,
-				B1298F1A285400FF0044D053 /* UserDefaultString.swift */,
-				B13F691A27D47E0E00CCF605 /* AppColors.swift */,
-				B1A8FEDE285AD13000C53CD4 /* AppFont.swift */,
 				B1BC970B27BA0FA200A8DED5 /* SceneDelegate.swift */,
 				B1BC970927BA0FA200A8DED5 /* AppDelegate.swift */,
 				B1BC971227BA0FA400A8DED5 /* Assets.xcassets */,
@@ -84,31 +113,29 @@
 			path = Support;
 			sourceTree = "<group>";
 		};
-		B18A5BA627DFC17700D1B0D4 /* Alerts */ = {
+		B18A5BA727DFC19700D1B0D4 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
-				B191090527CF1EB2004200A6 /* Alert.swift */,
-				B17C0A2027D95000005D39EB /* CustomAlert.swift */,
+				B191090527CF1EB2004200A6 /* PUCAlert.swift */,
+				B13E887928E5050D0062D8D0 /* PUCButton.swift */,
+				B13E887B28E505A50062D8D0 /* PUCTextField.swift */,
+				B13E887528E504AC0062D8D0 /* PUCTitleLabel.swift */,
+				B13E887D28E505F60062D8D0 /* PUCBodyLabel.swift */,
+				B13E887728E504D60062D8D0 /* PUCLabel.swift */,
 			);
-			path = Alerts;
+			path = "Custom Views";
 			sourceTree = "<group>";
 		};
-		B18A5BA727DFC19700D1B0D4 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				B18A5BA627DFC17700D1B0D4 /* Alerts */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		B1B7D61E27CF4D2D00AAFDA1 /* Controller */ = {
+		B1B7D61E27CF4D2D00AAFDA1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				B191090327CDF30D004200A6 /* AppControl.swift */,
+				B11AEAF828E3B13900CC076D /* MainTabBarController.swift */,
 				B1BC970D27BA0FA200A8DED5 /* MainViewController.swift */,
-				B176268627BCC70E00F05028 /* PushUpCountViewController.swift */,
+				B176268627BCC70E00F05028 /* StatsViewController.swift */,
+				B13E888228E512080062D8D0 /* SettingsViewController.swift */,
 			);
-			path = Controller;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		B1BC96FD27BA0FA100A8DED5 = {
@@ -132,8 +159,10 @@
 		B1BC970827BA0FA200A8DED5 /* PushUpChallenge */ = {
 			isa = PBXGroup;
 			children = (
-				B18A5BA727DFC19700D1B0D4 /* View */,
-				B1B7D61E27CF4D2D00AAFDA1 /* Controller */,
+				B13E887F28E507B30062D8D0 /* Extensions */,
+				B1B7D61E27CF4D2D00AAFDA1 /* Controllers */,
+				B18A5BA727DFC19700D1B0D4 /* Custom Views */,
+				B11AEAFA28E3B3F100CC076D /* Utilities */,
 				B17C0A1F27D90A8D005D39EB /* Support */,
 				B1BC971727BA0FA400A8DED5 /* Info.plist */,
 			);
@@ -215,16 +244,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1298F1B285400FF0044D053 /* UserDefaultString.swift in Sources */,
+				B13E887A28E5050D0062D8D0 /* PUCButton.swift in Sources */,
 				B1A8FEDF285AD13000C53CD4 /* AppFont.swift in Sources */,
+				B11AEAF928E3B13900CC076D /* MainTabBarController.swift in Sources */,
 				B1BC970E27BA0FA200A8DED5 /* MainViewController.swift in Sources */,
 				B1BC970A27BA0FA200A8DED5 /* AppDelegate.swift in Sources */,
+				B13E887828E504D60062D8D0 /* PUCLabel.swift in Sources */,
 				B1BC970C27BA0FA200A8DED5 /* SceneDelegate.swift in Sources */,
+				B13E888128E507E30062D8D0 /* UIViewController+Ext.swift in Sources */,
 				B13F691B27D47E0E00CCF605 /* AppColors.swift in Sources */,
-				B176268727BCC70E00F05028 /* PushUpCountViewController.swift in Sources */,
+				B13E887628E504AC0062D8D0 /* PUCTitleLabel.swift in Sources */,
+				B176268727BCC70E00F05028 /* StatsViewController.swift in Sources */,
 				B191090427CDF30D004200A6 /* AppControl.swift in Sources */,
-				B191090627CF1EB2004200A6 /* Alert.swift in Sources */,
-				B17C0A2127D95000005D39EB /* CustomAlert.swift in Sources */,
+				B191090627CF1EB2004200A6 /* PUCAlert.swift in Sources */,
+				B13E887C28E505A50062D8D0 /* PUCTextField.swift in Sources */,
 				B19A71E72857E0B300180560 /* DateManagement.swift in Sources */,
+				B13E887E28E505F60062D8D0 /* PUCBodyLabel.swift in Sources */,
+				B13E888328E512080062D8D0 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
