@@ -121,12 +121,13 @@ final class MainViewController: UIViewController {
             pushUpTextFieldNumber = checkTheValue
         } else if pushUpTextFieldNumber == 0 {
             print("You did not enter a number")
+            pushUpTextFieldNumber = nil
         } else {
             print("You did not enter a number")
+            pushUpTextFieldNumber = nil
         }
         print(pushUpTextFieldNumber)
 
-        
         pushUpTextField.text = ""
     }
     
