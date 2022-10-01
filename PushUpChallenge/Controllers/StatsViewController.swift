@@ -7,11 +7,14 @@
 
 import UIKit
 import AVFoundation
+import CoreData
 
 final class StatsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     let userDefault = UserDefaultString()
     let systemSoundID: SystemSoundID = 1306
+    
+    var statsArray = [Stats]()
     
     var tableView = UITableView()
     
@@ -35,6 +38,7 @@ final class StatsViewController: UIViewController, UITableViewDataSource, UITabl
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.backgroundColor = .clear
+        tableView.reloadData()
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         

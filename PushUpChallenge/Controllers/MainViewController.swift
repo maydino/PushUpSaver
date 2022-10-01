@@ -7,16 +7,23 @@
 
 import UIKit
 import UserNotifications
+import CoreData
 
 final class MainViewController: UIViewController {
     
-    let appControl = AppControl()
-    let userDefault = UserDefaultString()
-    private var pushUpTextFieldNumber : Int?
+    // MARK: - These will go
+    lazy var userDefault = UserDefaultString()
+    lazy var appControl = AppControl()
 
-       
-    // MARK: - Day Label Stack
     
+    let todayDate = Date.now
+    private var pushUpTextFieldNumber : Int?
+    
+    // Care Data Properties
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var statsArray = [Stats]()
+
+    // MARK: - View Properties
     private let pushUpImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "pushUp")
@@ -32,15 +39,20 @@ final class MainViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .backgroundColor
         
+        // Keep the screen portrait
         AppUtility.lockOrientation(.portrait)
         
+        // Probably we wont need this function
         appControl.startControl()
         
+        //MARK: - Configure Views
         pushUpImageConfiguration()
         completedLabelConfiguration()
-
         pushUpTextFieldConfiguration()
         saveButtonConfiguration()
+        
+        // See the file directory
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -117,6 +129,35 @@ final class MainViewController: UIViewController {
     //MARK: - Button Actions
     // Save Button Pressed Action
     @objc func saveButtonPressed() {
+        
+        var textField = UITextField()
+        
+        let alert = UIAlertController(title: "Add Completed Push Ups", message: "", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Save Push Ups", style: .default) { action in
+            
+            let newItem = Stats(context: self.context)
+            newItem.date = "Place holder"
+            newItem.pushUpDone = textField.text!
+            
+            self.statsArray.append(newItem)
+            
+            print("we saved")
+            self.saveItems()
+
+        }
+        
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "Enter push ups..."
+            textField = alertTextField
+            textField.keyboardType = .asciiCapableNumberPad
+
+        }
+        
+        alert.addAction(action)
+        
+        present(alert, animated: false)
+        
         if let checkTheValue = Int(pushUpTextField.text!) {
             pushUpTextFieldNumber = checkTheValue
         } else if pushUpTextFieldNumber == 0 {
@@ -129,6 +170,17 @@ final class MainViewController: UIViewController {
         print(pushUpTextFieldNumber)
 
         pushUpTextField.text = ""
+    }
+    
+    
+    func saveItems() {
+        
+        do {
+            try context.save()
+        } catch {
+            print("Error: \(error)")
+        }
+        
     }
     
     
