@@ -138,7 +138,10 @@ final class MainViewController: UIViewController {
             
             let newItem = Stats(context: self.context)
             newItem.date = "Place holder"
-            newItem.pushUpDone = textField.text!
+            newItem.pushUpDone = "textField.text!"
+            
+            print(newItem.pushUpDone)
+            print(newItem.date)
             
             self.statsArray.append(newItem)
             
