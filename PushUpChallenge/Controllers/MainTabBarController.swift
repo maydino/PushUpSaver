@@ -26,6 +26,7 @@ final class MainTabBarController: UITabBarController {
         homeVC.title = "Home"
         homeVC.tabBarItem.tag = 0
         homeVC.tabBarItem.image = UIImage(systemName: "play")!.withBaselineOffset(fromBottom: UIFont.systemFontSize / 2)
+    
         return UINavigationController(rootViewController: homeVC)
     }
     
@@ -34,6 +35,7 @@ final class MainTabBarController: UITabBarController {
         statsVC.title = "Stats"
         statsVC.tabBarItem.tag = 1
         statsVC.tabBarItem.image = UIImage(systemName: "chart.bar")?.withBaselineOffset(fromBottom: UIFont.systemFontSize / 2)
+        statsVC.tableView.reloadData()
         return UINavigationController(rootViewController: statsVC)
     }
     

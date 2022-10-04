@@ -14,22 +14,34 @@ final class StatsViewController: UIViewController, UITableViewDataSource, UITabl
     let userDefault = UserDefaultString()
     let systemSoundID: SystemSoundID = 1306
     
-    var statsArray = [Stats]()
-    
+    // TableView
     var tableView = UITableView()
     
+    // Care Data Properties
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var statsArray = [Stats]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .backgroundColor
         tableViewConfigure()
-
         
         AudioServicesPlaySystemSound(systemSoundID)
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        
+        loadItems()
        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+        loadItems()
+
+
     }
     
     func tableViewConfigure() {
@@ -54,15 +66,56 @@ final class StatsViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return statsArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
-        cell.textLabel?.text = "test"
+        let stat = statsArray[indexPath.row]
+        
+        cell.textLabel?.text = "Push Up: \(stat.pushUpDone!), Date: \(stat.date!)"
         cell.backgroundColor = .clear
+        cell.textLabel?.textColor = .white
+        
         return cell
     }
+    
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        context.delete(statsArray[indexPath.row])
+//        statsArray.remove(at: indexPath.row)
+//        saveItems()
+//    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            context.delete(statsArray[indexPath.row])
+            statsArray.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            saveItems()
+        }
+            
+    }
+    
+    // Save Core Data Items
+    func saveItems() {
+        do {
+            try context.save()
+        } catch {
+            print("Error: \(error)")
+        }
+    }
+    
+    // Load Core Data Items
+    func loadItems() {
+        let request : NSFetchRequest<Stats> = Stats.fetchRequest()
+        do {
+            statsArray = try context.fetch(request)
+        } catch {
+            print("Error fetching data from context \(error)")
+        }
+    }
+    
+    
     
     
 }

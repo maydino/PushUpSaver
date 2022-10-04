@@ -26,13 +26,13 @@ final class MainViewController: UIViewController {
     // MARK: - View Properties
     private let pushUpImage: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "pushUp")
+        image.image = UIImage(named: "pushUpImage")
+        image.scalesLargeContentImage = true
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
     
     private let enterCompletedLabel = PUCLabel()
-    private let pushUpTextField = PUCTextField()
     private let saveButton = PUCButton()
     
     override func viewDidLoad() {
@@ -48,7 +48,6 @@ final class MainViewController: UIViewController {
         //MARK: - Configure Views
         pushUpImageConfiguration()
         completedLabelConfiguration()
-        pushUpTextFieldConfiguration()
         saveButtonConfiguration()
         
         // See the file directory
@@ -67,9 +66,11 @@ final class MainViewController: UIViewController {
         view.addSubview(pushUpImage)
         pushUpImage.layer.cornerRadius = 10
         pushUpImage.layer.masksToBounds = true
+        pushUpImage.contentMode = .scaleAspectFit
         
+
         NSLayoutConstraint.activate([
-            pushUpImage.widthAnchor.constraint(equalToConstant: view.bounds.width*0.6),
+            pushUpImage.widthAnchor.constraint(equalToConstant: view.bounds.width*0.9),
             pushUpImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             pushUpImage.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
             pushUpImage.heightAnchor.constraint(equalToConstant: view.bounds.width*0.6)
@@ -92,25 +93,11 @@ final class MainViewController: UIViewController {
         ])
     }
     
-    // Push Up Text Field Configuration
-    func pushUpTextFieldConfiguration() {
-        pushUpTextField.translatesAutoresizingMaskIntoConstraints = false
-
-        view.addSubview(pushUpTextField)
-        
-        NSLayoutConstraint.activate([
-            pushUpTextField.widthAnchor.constraint(equalToConstant: 100),
-            pushUpTextField.topAnchor.constraint(equalTo: enterCompletedLabel.bottomAnchor, constant: 10),
-            pushUpTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
-            pushUpTextField.heightAnchor.constraint(equalToConstant: 50)
-        ])
-    }
-    
     // Save Completed Push Ups Button Configuration
     func saveButtonConfiguration() {
         saveButton.translatesAutoresizingMaskIntoConstraints = false
-        saveButton.setTitle("Save", for: .normal)
-        saveButton.backgroundColor = .clear
+        saveButton.setTitle("Click and Enter Push Ups", for: .normal)
+        saveButton.backgroundColor = .systemTeal
         saveButton.setTitleColor(.systemBlue, for: .normal)
         saveButton.setTitleColor(.systemGray, for: .highlighted)
         saveButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title3)
@@ -119,26 +106,30 @@ final class MainViewController: UIViewController {
         view.addSubview(saveButton)
         
         NSLayoutConstraint.activate([
-            saveButton.widthAnchor.constraint(equalToConstant: 50),
+            saveButton.widthAnchor.constraint(equalToConstant: 250),
             saveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
-            saveButton.topAnchor.constraint(equalTo: pushUpTextField.bottomAnchor, constant: 15),
-            saveButton.heightAnchor.constraint(equalToConstant: 25)
+            saveButton.topAnchor.constraint(equalTo: pushUpImage.bottomAnchor, constant: 60),
+            saveButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
+    
+    
     
     //MARK: - Button Actions
     // Save Button Pressed Action
     @objc func saveButtonPressed() {
         
         var textField = UITextField()
+        textField.frame.size.width = 25
+        
         
         let alert = UIAlertController(title: "Add Completed Push Ups", message: "", preferredStyle: .alert)
         
-        let action = UIAlertAction(title: "Save Push Ups", style: .default) { action in
+        let action = UIAlertAction(title: "Save", style: .default) { action in
             
             let newItem = Stats(context: self.context)
-            newItem.date = "Place holder"
-            newItem.pushUpDone = "textField.text!"
+            newItem.date = self.todayDate.formatted(.dateTime)
+            newItem.pushUpDone = textField.text ?? "0"
             
             print(newItem.pushUpDone)
             print(newItem.date)
@@ -158,10 +149,12 @@ final class MainViewController: UIViewController {
         }
         
         alert.addAction(action)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
         
         present(alert, animated: false)
         
-        if let checkTheValue = Int(pushUpTextField.text!) {
+        if let checkTheValue = Int(textField.text!) {
             pushUpTextFieldNumber = checkTheValue
         } else if pushUpTextFieldNumber == 0 {
             print("You did not enter a number")
@@ -172,7 +165,7 @@ final class MainViewController: UIViewController {
         }
         print(pushUpTextFieldNumber)
 
-        pushUpTextField.text = ""
+        textField.text = ""
     }
     
     
@@ -184,8 +177,7 @@ final class MainViewController: UIViewController {
             print("Error: \(error)")
         }
         
-    }
-    
+    }    
     
 }
 
