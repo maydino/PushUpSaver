@@ -11,15 +11,15 @@ import CoreData
 
 final class StatsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    let userDefault = UserDefaultString()
-    let systemSoundID: SystemSoundID = 1306
+    private let userDefault = UserDefaultString()
+    private let systemSoundID: SystemSoundID = 1306
     
     // TableView
     var tableView = UITableView()
     
     // Care Data Properties
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var statsArray = [Stats]()
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private var statsArray = [Stats]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,15 +32,20 @@ final class StatsViewController: UIViewController, UITableViewDataSource, UITabl
         tableView.delegate = self
         tableView.dataSource = self
         
-        
+        tableView.reloadData()
+
         loadItems()
        
     }
     
+    
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.reloadData()
+        loadItems()
+    }
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
         loadItems()
-
 
     }
     
@@ -75,16 +80,10 @@ final class StatsViewController: UIViewController, UITableViewDataSource, UITabl
         
         cell.textLabel?.text = "Push Up: \(stat.pushUpDone!), Date: \(stat.date!)"
         cell.backgroundColor = .clear
-        cell.textLabel?.textColor = .white
+        cell.textLabel?.textColor = .systemGray6
         
         return cell
     }
-    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        context.delete(statsArray[indexPath.row])
-//        statsArray.remove(at: indexPath.row)
-//        saveItems()
-//    }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -110,6 +109,7 @@ final class StatsViewController: UIViewController, UITableViewDataSource, UITabl
         let request : NSFetchRequest<Stats> = Stats.fetchRequest()
         do {
             statsArray = try context.fetch(request)
+            statsArray = statsArray.reversed()
         } catch {
             print("Error fetching data from context \(error)")
         }

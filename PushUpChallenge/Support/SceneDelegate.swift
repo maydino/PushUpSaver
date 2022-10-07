@@ -11,6 +11,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
     
+    private let darkModeOn = UserDefaultString.defaults.bool(forKey: UserDefaultString.darkModeOn)
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
@@ -18,6 +19,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         window?.makeKeyAndVisible()
         window?.rootViewController = MainTabBarController()
+        
+        if darkModeOn {
+            window?.overrideUserInterfaceStyle = .dark
+
+        } else {
+            window?.overrideUserInterfaceStyle = .light
+        }
+
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -50,6 +59,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Save changes in the application's managed object context when the application transitions to the background.
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
+    
     
     
 }

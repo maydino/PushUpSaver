@@ -35,13 +35,12 @@ final class MainTabBarController: UITabBarController {
         statsVC.title = "Stats"
         statsVC.tabBarItem.tag = 1
         statsVC.tabBarItem.image = UIImage(systemName: "chart.bar")?.withBaselineOffset(fromBottom: UIFont.systemFontSize / 2)
-        statsVC.tableView.reloadData()
         return UINavigationController(rootViewController: statsVC)
     }
     
     func createSettingsNavigationController() -> UINavigationController {
         let settingsVC = SettingsViewController()
-        settingsVC.title = "Settings"
+        settingsVC.title = "Remind me"
         settingsVC.tabBarItem.tag = 2
         settingsVC.tabBarItem.image = UIImage(systemName: "square.and.pencil")?.withBaselineOffset(fromBottom: UIFont.systemFontSize / 2)
         return UINavigationController(rootViewController: settingsVC)

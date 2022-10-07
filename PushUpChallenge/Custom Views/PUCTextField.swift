@@ -21,7 +21,8 @@ class PUCTextField: UITextField {
     }
     
     private func textFieldConfigure() {
-        
+        translatesAutoresizingMaskIntoConstraints = false
+
         textColor = .label
         tintColor = .label
         layer.cornerRadius = 10

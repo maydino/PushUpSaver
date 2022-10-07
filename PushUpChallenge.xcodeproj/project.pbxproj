@@ -23,7 +23,6 @@
 		B18F8997285FB4A700CFD844 /* First.png in Resources */ = {isa = PBXBuildFile; fileRef = B18F8994285FB4A700CFD844 /* First.png */; };
 		B18F8998285FB4A700CFD844 /* Second.png in Resources */ = {isa = PBXBuildFile; fileRef = B18F8995285FB4A700CFD844 /* Second.png */; };
 		B18F8999285FB4A700CFD844 /* Third.png in Resources */ = {isa = PBXBuildFile; fileRef = B18F8996285FB4A700CFD844 /* Third.png */; };
-		B191090427CDF30D004200A6 /* AppControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B191090327CDF30D004200A6 /* AppControl.swift */; };
 		B191090627CF1EB2004200A6 /* PUCAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B191090527CF1EB2004200A6 /* PUCAlert.swift */; };
 		B19A71E72857E0B300180560 /* DateManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19A71E62857E0B300180560 /* DateManagement.swift */; };
 		B1A8FEDF285AD13000C53CD4 /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A8FEDE285AD13000C53CD4 /* AppFont.swift */; };
@@ -32,6 +31,7 @@
 		B1BC970E27BA0FA200A8DED5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BC970D27BA0FA200A8DED5 /* MainViewController.swift */; };
 		B1BC971327BA0FA400A8DED5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1BC971227BA0FA400A8DED5 /* Assets.xcassets */; };
 		B1BC971627BA0FA400A8DED5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1BC971427BA0FA400A8DED5 /* LaunchScreen.storyboard */; };
+		B1BFF26628EDE7A80037628F /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BFF26528EDE7A80037628F /* Date+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,7 +51,6 @@
 		B18F8994285FB4A700CFD844 /* First.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = First.png; sourceTree = "<group>"; };
 		B18F8995285FB4A700CFD844 /* Second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Second.png; sourceTree = "<group>"; };
 		B18F8996285FB4A700CFD844 /* Third.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Third.png; sourceTree = "<group>"; };
-		B191090327CDF30D004200A6 /* AppControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppControl.swift; sourceTree = "<group>"; };
 		B191090527CF1EB2004200A6 /* PUCAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PUCAlert.swift; sourceTree = "<group>"; };
 		B19A71E62857E0B300180560 /* DateManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManagement.swift; sourceTree = "<group>"; };
 		B1A8FEDE285AD13000C53CD4 /* AppFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
@@ -62,6 +61,7 @@
 		B1BC971227BA0FA400A8DED5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B1BC971527BA0FA400A8DED5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B1BC971727BA0FA400A8DED5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B1BFF26528EDE7A80037628F /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				B13E888028E507E30062D8D0 /* UIViewController+Ext.swift */,
+				B1BFF26528EDE7A80037628F /* Date+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -139,7 +140,6 @@
 		B1B7D61E27CF4D2D00AAFDA1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B191090327CDF30D004200A6 /* AppControl.swift */,
 				B11AEAF828E3B13900CC076D /* MainTabBarController.swift */,
 				B1BC970D27BA0FA200A8DED5 /* MainViewController.swift */,
 				B176268627BCC70E00F05028 /* StatsViewController.swift */,
@@ -274,13 +274,13 @@
 				B13F691B27D47E0E00CCF605 /* AppColors.swift in Sources */,
 				B13E887628E504AC0062D8D0 /* PUCTitleLabel.swift in Sources */,
 				B176268727BCC70E00F05028 /* StatsViewController.swift in Sources */,
-				B191090427CDF30D004200A6 /* AppControl.swift in Sources */,
 				B191090627CF1EB2004200A6 /* PUCAlert.swift in Sources */,
 				B16E2D2828E8BF1F00D7BE40 /* DataModel.xcdatamodeld in Sources */,
 				B13E887C28E505A50062D8D0 /* PUCTextField.swift in Sources */,
 				B19A71E72857E0B300180560 /* DateManagement.swift in Sources */,
 				B13E887E28E505F60062D8D0 /* PUCBodyLabel.swift in Sources */,
 				B13E888328E512080062D8D0 /* SettingsViewController.swift in Sources */,
+				B1BFF26628EDE7A80037628F /* Date+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

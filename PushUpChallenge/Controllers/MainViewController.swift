@@ -11,51 +11,39 @@ import CoreData
 
 final class MainViewController: UIViewController {
     
-    // MARK: - These will go
-    lazy var userDefault = UserDefaultString()
-    lazy var appControl = AppControl()
-
-    
-    let todayDate = Date.now
+    private let todayDate = Date.now
     private var pushUpTextFieldNumber : Int?
     
     // Care Data Properties
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var statsArray = [Stats]()
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private var statsArray = [Stats]()
 
     // MARK: - View Properties
     private let pushUpImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "pushUpImage")
         image.scalesLargeContentImage = true
-        image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
     
-    private let enterCompletedLabel = PUCLabel()
     private let saveButton = PUCButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .backgroundColor
+        view.backgroundColor = .systemGray2
         
         // Keep the screen portrait
         AppUtility.lockOrientation(.portrait)
-        
-        // Probably we wont need this function
-        appControl.startControl()
-        
+                
         //MARK: - Configure Views
         pushUpImageConfiguration()
-        completedLabelConfiguration()
         saveButtonConfiguration()
         
-        // See the file directory
+        // See the file directory for Core Data
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
     }
     override func viewDidAppear(_ animated: Bool) {
-        appControl.startControl()
 
     }
 
@@ -63,9 +51,12 @@ final class MainViewController: UIViewController {
     
     // Push Up Image View Configuration
     func pushUpImageConfiguration() {
+        pushUpImage.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(pushUpImage)
         pushUpImage.layer.cornerRadius = 10
-        pushUpImage.layer.masksToBounds = true
+        pushUpImage.clipsToBounds = true
+    
+        
         pushUpImage.contentMode = .scaleAspectFit
         
 
@@ -77,28 +68,13 @@ final class MainViewController: UIViewController {
         ])
     }
     
-    // Enter Completed Push Ups Label Configuration
-    func completedLabelConfiguration() {
-        enterCompletedLabel.translatesAutoresizingMaskIntoConstraints = false
-        enterCompletedLabel.text = "Enter Completed Push Ups"
-        enterCompletedLabel.textAlignment = .center
-                
-        view.addSubview(enterCompletedLabel)
-        
-        NSLayoutConstraint.activate([
-            enterCompletedLabel.widthAnchor.constraint(equalToConstant: view.bounds.width*0.8),
-            enterCompletedLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
-            enterCompletedLabel.topAnchor.constraint(equalTo: pushUpImage.bottomAnchor, constant: 20),
-            enterCompletedLabel.heightAnchor.constraint(equalToConstant: 25)
-        ])
-    }
-    
+
     // Save Completed Push Ups Button Configuration
     func saveButtonConfiguration() {
         saveButton.translatesAutoresizingMaskIntoConstraints = false
         saveButton.setTitle("Click and Enter Push Ups", for: .normal)
-        saveButton.backgroundColor = .systemTeal
-        saveButton.setTitleColor(.systemBlue, for: .normal)
+        saveButton.backgroundColor = .systemPink
+        saveButton.setTitleColor(.systemGray5, for: .normal)
         saveButton.setTitleColor(.systemGray, for: .highlighted)
         saveButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title3)
         saveButton.addTarget(self, action: #selector(saveButtonPressed), for: .touchUpInside)
@@ -113,15 +89,11 @@ final class MainViewController: UIViewController {
         ])
     }
     
-    
-    
     //MARK: - Button Actions
     // Save Button Pressed Action
     @objc func saveButtonPressed() {
         
         var textField = UITextField()
-        textField.frame.size.width = 25
-        
         
         let alert = UIAlertController(title: "Add Completed Push Ups", message: "", preferredStyle: .alert)
         
@@ -131,13 +103,10 @@ final class MainViewController: UIViewController {
             newItem.date = self.todayDate.formatted(.dateTime)
             newItem.pushUpDone = textField.text ?? "0"
             
-            print(newItem.pushUpDone)
-            print(newItem.date)
-            
             self.statsArray.append(newItem)
             
-            print("we saved")
             self.saveItems()
+            print("Core Data saved")
 
         }
         

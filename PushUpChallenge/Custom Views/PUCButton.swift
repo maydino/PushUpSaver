@@ -35,10 +35,9 @@ class PUCButton: UIButton {
     }
     private func shadows() {
         layer.shadowRadius = 5
-        layer.shadowColor = UIColor.systemBlue.cgColor
+        layer.shadowColor = UIColor.systemGray5.cgColor
         layer.shadowOpacity = 0.5
         layer.shadowOffset = CGSize(width: 4, height: 4)
-        layer.backgroundColor = UIColor.backgroundColor.cgColor
         layer.masksToBounds = false
         
     }
