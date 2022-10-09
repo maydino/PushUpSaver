@@ -28,7 +28,7 @@ class PUCTitleLabel: UILabel {
     
     private func configure() {
 
-        textColor = .label
+        textColor = UIColor(named: AppColors.textColor)
         adjustsFontSizeToFitWidth = true
         minimumScaleFactor = 0.9
         lineBreakMode = .byTruncatingTail

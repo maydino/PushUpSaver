@@ -23,8 +23,8 @@ class PUCTextField: UITextField {
     private func textFieldConfigure() {
         translatesAutoresizingMaskIntoConstraints = false
 
-        textColor = .label
-        tintColor = .label
+        textColor = UIColor(named: AppColors.textColor)
+        tintColor = UIColor(named: AppColors.textColorH)
         layer.cornerRadius = 10
         textAlignment = .center
         font = UIFont.preferredFont(forTextStyle: .title2)
@@ -33,7 +33,7 @@ class PUCTextField: UITextField {
         returnKeyType = .done
         keyboardType = .asciiCapableNumberPad
         
-        backgroundColor = .systemGray
+        backgroundColor = UIColor(named: AppColors.buttonColor)
         autocorrectionType = .no
         setDoneOnKeyboard()
         

@@ -8,7 +8,7 @@
 import UIKit
 
 
-extension UIColor {
+struct AppColors {
     
 //    static let backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 63/255, alpha: 1)
 //    static let textColor = UIColor(red: 0/255, green: 127/255, blue: 95/255, alpha: 1)
@@ -27,8 +27,15 @@ extension UIColor {
 //    static let backgroundColor = UIColor(red: 129/255, green: 178/255, blue: 154/255, alpha: 1)
 //    static let textColor = UIColor(red: 244/255, green: 241/255, blue: 222/255, alpha: 1)
 
-    static let backgroundColor = UIColor(red: 129/255, green: 178/255, blue: 154/255, alpha: 1)
-    static let textColor = UIColor(red: 86/255, green: 86/255, blue: 86/255, alpha: 1)
+//    static let backgroundColor = UIColor(red: 129/255, green: 178/255, blue: 154/255, alpha: 1)
+//    static let textColor = UIColor(red: 86/255, green: 86/255, blue: 86/255, alpha: 1)
+    
+    static let backgroundColor = "backgroundColor"
+    static let buttonColor = "buttonColor"
+    static let shadowColor = "shadowColor"
+    static let textColor = "textColor"
+    static let textColorH = "textColorH"
+
 }
 
 

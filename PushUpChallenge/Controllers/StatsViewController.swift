@@ -24,7 +24,7 @@ final class StatsViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .backgroundColor
+        view.backgroundColor = UIColor(named: AppColors.backgroundColor)
         tableViewConfigure()
         
         AudioServicesPlaySystemSound(systemSoundID)
@@ -80,7 +80,7 @@ final class StatsViewController: UIViewController, UITableViewDataSource, UITabl
         
         cell.textLabel?.text = "Push Up: \(stat.pushUpDone!), Date: \(stat.date!)"
         cell.backgroundColor = .clear
-        cell.textLabel?.textColor = .systemGray6
+        cell.textLabel?.textColor = UIColor(named: AppColors.textColor)
         
         return cell
     }

@@ -26,7 +26,7 @@ class PUCBodyLabel: UILabel {
     }
     
     private func configure() {
-        textColor = .secondaryLabel
+        textColor = UIColor(named: AppColors.textColor)
         font = UIFont.preferredFont(forTextStyle: .body)
         adjustsFontSizeToFitWidth = true
         minimumScaleFactor = 0.8

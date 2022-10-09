@@ -11,6 +11,11 @@ import CoreData
 
 final class MainViewController: UIViewController {
     
+    let darkShadow = CALayer()
+    let lightShadow = CALayer()
+    let cornerRadius: CGFloat = 5
+    let shadowRadius: CGFloat = 10
+    
     private let todayDate = Date.now
     private var pushUpTextFieldNumber : Int?
     
@@ -30,7 +35,7 @@ final class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemGray2
+        view.backgroundColor = UIColor(named: AppColors.backgroundColor)
         
         // Keep the screen portrait
         AppUtility.lockOrientation(.portrait)
@@ -43,9 +48,6 @@ final class MainViewController: UIViewController {
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
     }
-    override func viewDidAppear(_ animated: Bool) {
-
-    }
 
     // MARK: - UI Configuration Functions
     
@@ -55,11 +57,8 @@ final class MainViewController: UIViewController {
         view.addSubview(pushUpImage)
         pushUpImage.layer.cornerRadius = 10
         pushUpImage.clipsToBounds = true
-    
-        
         pushUpImage.contentMode = .scaleAspectFit
         
-
         NSLayoutConstraint.activate([
             pushUpImage.widthAnchor.constraint(equalToConstant: view.bounds.width*0.9),
             pushUpImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
@@ -71,14 +70,9 @@ final class MainViewController: UIViewController {
 
     // Save Completed Push Ups Button Configuration
     func saveButtonConfiguration() {
-        saveButton.translatesAutoresizingMaskIntoConstraints = false
+        
         saveButton.setTitle("Click and Enter Push Ups", for: .normal)
-        saveButton.backgroundColor = .systemPink
-        saveButton.setTitleColor(.systemGray5, for: .normal)
-        saveButton.setTitleColor(.systemGray, for: .highlighted)
-        saveButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title3)
         saveButton.addTarget(self, action: #selector(saveButtonPressed), for: .touchUpInside)
-                        
         view.addSubview(saveButton)
         
         NSLayoutConstraint.activate([
@@ -86,7 +80,11 @@ final class MainViewController: UIViewController {
             saveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
             saveButton.topAnchor.constraint(equalTo: pushUpImage.bottomAnchor, constant: 60),
             saveButton.heightAnchor.constraint(equalToConstant: 50)
+            
+            
         ])
+        
+ 
     }
     
     //MARK: - Button Actions
@@ -132,7 +130,6 @@ final class MainViewController: UIViewController {
             print("You did not enter a number")
             pushUpTextFieldNumber = nil
         }
-        print(pushUpTextFieldNumber)
 
         textField.text = ""
     }

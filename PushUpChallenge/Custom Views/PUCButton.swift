@@ -9,10 +9,17 @@ import UIKit
 
 class PUCButton: UIButton {
 
+    let darkShadow = CALayer()
+    let lightShadow = CALayer()
+    let cornerRadius: CGFloat = 10
+    let shadowRadius: CGFloat = 10
+    let shadowOffset: CGFloat = 10
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
         shadows()
+
     }
     
     required init?(coder: NSCoder) {
@@ -21,24 +28,45 @@ class PUCButton: UIButton {
     
     init(backgroundColor: UIColor) {
         super.init(frame: .zero)
-        self.backgroundColor = .backgroundColor
         configure()
         shadows()
+
     }
     
     private func configure() {
-        layer.cornerRadius = 10
+        layer.cornerRadius = 5
         clipsToBounds = true
-        titleLabel?.textColor = .label
-        titleLabel?.font = UIFont.preferredFont(forTextStyle: .title1)
+        backgroundColor = .clear
+
+        setTitleColor(UIColor(named: AppColors.textColor), for: .normal)
+        setTitleColor(UIColor(named: AppColors.textColorH), for: .highlighted)
+        titleLabel?.font = UIFont.preferredFont(forTextStyle: .title3)
         translatesAutoresizingMaskIntoConstraints = false
+        layer.masksToBounds = false
+        frame = CGRect(x: 0, y: 0, width: 250, height: 50)
+
+        darkShadow.frame = bounds
+        darkShadow.backgroundColor = UIColor.systemBackground.cgColor
+        darkShadow.shadowColor = UIColor.systemTeal.cgColor
+        darkShadow.cornerRadius = cornerRadius
+        darkShadow.shadowOffset = CGSize(width: shadowRadius, height: shadowRadius)
+        darkShadow.shadowOpacity = 0.5
+        darkShadow.shadowRadius = shadowRadius
+        
+        layer.insertSublayer(darkShadow, at: 0)
+
+        lightShadow.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
+        lightShadow.shadowColor = UIColor.white.cgColor
+        lightShadow.cornerRadius = cornerRadius
+        lightShadow.shadowOffset = CGSize(width: -shadowRadius, height: -shadowRadius)
+        lightShadow.shadowOpacity = 0.5
+        lightShadow.shadowRadius = shadowRadius
+        layer.insertSublayer(lightShadow, at: 1)
+        
+
     }
     private func shadows() {
-        layer.shadowRadius = 5
-        layer.shadowColor = UIColor.systemGray5.cgColor
-        layer.shadowOpacity = 0.5
-        layer.shadowOffset = CGSize(width: 4, height: 4)
-        layer.masksToBounds = false
+
         
     }
 

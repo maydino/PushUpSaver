@@ -13,11 +13,11 @@ class SettingsViewController: UIViewController {
     let darkModeOnLabel = PUCLabel(textAlignment: .left, fontSize: 20, title: "Dark mode")
     let darkModeOnSwitch = UISwitch()
     
-    // Reminder on and off row, First Row
+    // Reminder on and off row, Second Row
     let dailyReminderOnOffLabel = PUCLabel(textAlignment: .left, fontSize: 20, title: "Daily Reminder On-Off")
     let dailyReminderSwitch = UISwitch()
     
-    // Time Picker Info, Second Row
+    // Time Picker Info, Third Row
     let timePickTextLabel = PUCLabel(textAlignment: .left, fontSize: 20, title: "Pick the daily reminder time")
     let timePickTextField = PUCTextField()
     
@@ -37,7 +37,7 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         
         // Backgroundcolor
-        view.backgroundColor = .backgroundColor
+        view.backgroundColor = UIColor(named: AppColors.backgroundColor)
         
         // First Row
         darkModeOnLabelConfiguration()
@@ -60,14 +60,12 @@ class SettingsViewController: UIViewController {
     
     func darkModeOnLabelConfiguration() {
         
-        darkModeOnLabel.textAlignment = .left
-        darkModeOnLabel.textColor = .systemGray6
         view.addSubview(darkModeOnLabel)
         
         NSLayoutConstraint.activate([
         
-            darkModeOnLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            darkModeOnLabel.heightAnchor.constraint(equalToConstant: 40),
+            darkModeOnLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 90),
+            darkModeOnLabel.heightAnchor.constraint(equalToConstant: 50),
             darkModeOnLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             darkModeOnLabel.widthAnchor.constraint(equalToConstant: 240)
 
@@ -86,39 +84,33 @@ class SettingsViewController: UIViewController {
     }
     
     @objc func darkModeSwitchValueDidChange(_ sender: UISwitch) {
-                
 
+        
         if #available(iOS 13.0, *) {
              let appDelegate = UIApplication.shared.windows.first
                  if sender.isOn {
+                     UserDefaultString.defaults.set(true, forKey: UserDefaultString.darkModeOn)
                     appDelegate?.overrideUserInterfaceStyle = .dark
                       return
+                 } else {
+                     UserDefaultString.defaults.set(false, forKey: UserDefaultString.darkModeOn)
                  }
              appDelegate?.overrideUserInterfaceStyle = .light
              return
         }
-//        if dailyReminderSwitch.isOn == true {
-//            print("dark mode turned on")
-//            UserDefaultString.defaults.set(true, forKey: UserDefaultString.darkModeOn)
-//        } else {
-//            print("dark mode turned Off")
-//            UserDefaultString.defaults.set(false, forKey: UserDefaultString.darkModeOn)
-//            
-//        }
+
     }
     
     //MARK: - Second Row UI Configuration
     
     func dailyReminderOnOffLabelConfiguration() {
         
-        dailyReminderOnOffLabel.textAlignment = .left
-        dailyReminderOnOffLabel.textColor = .systemGray6
         view.addSubview(dailyReminderOnOffLabel)
         
         NSLayoutConstraint.activate([
         
-            dailyReminderOnOffLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 70),
-            dailyReminderOnOffLabel.heightAnchor.constraint(equalToConstant: 40),
+            dailyReminderOnOffLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 140),
+            dailyReminderOnOffLabel.heightAnchor.constraint(equalToConstant: 50),
             dailyReminderOnOffLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             dailyReminderOnOffLabel.widthAnchor.constraint(equalToConstant: 240)
 
@@ -143,11 +135,13 @@ class SettingsViewController: UIViewController {
         if dailyReminderSwitch.isOn == true {
             print("turned on")
             UserDefaultString.defaults.set(true, forKey: UserDefaultString.reminderOnOff)
+            localNotificationHandle(hour: reminderHour, minute: reminderMinute, idString: "Time to do some push-ups!")
+
         } else {
             print("turned Off")
             UserDefaultString.defaults.set(false, forKey: UserDefaultString.reminderOnOff)
-            
-            localNotificationHandle(hour: reminderHour, minute: reminderMinute, idString: "Time to do some push-ups!")
+            UserDefaultString.defaults.set(nil, forKey: UserDefaultString.notification)
+
         }
 
         print(reminderHour, reminderMinute)
@@ -157,8 +151,6 @@ class SettingsViewController: UIViewController {
 
     func TimePickTextLabelConfiguration() {
 
-        timePickTextLabel.textAlignment = .left
-        timePickTextLabel.textColor = .systemGray6
         view.addSubview(timePickTextLabel)
         
         NSLayoutConstraint.activate([
@@ -196,7 +188,7 @@ class SettingsViewController: UIViewController {
                 
     }
     
-    //MARK: - Time Picker
+    //MARK: - Time Picker Bottom Row
     // Configuration
     func timePickerConfiguration() {
         

@@ -13,9 +13,9 @@ final class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        UITabBar.appearance().tintColor = .textColor
-        UITabBar.appearance().unselectedItemTintColor = .systemBackground
-        UITabBar.appearance().backgroundColor = .systemPink
+        UITabBar.appearance().tintColor = UIColor(named: AppColors.textColorH)
+        UITabBar.appearance().unselectedItemTintColor = UIColor(named: AppColors.textColor)
+        UITabBar.appearance().backgroundColor = UIColor(named: AppColors.buttonColor)
                 
         setViewControllers([createHomeNavigationController(),createStatsNavigationController(),createSettingsNavigationController()], animated: true)
 
