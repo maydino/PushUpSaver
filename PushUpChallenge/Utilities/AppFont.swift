@@ -5,11 +5,15 @@
 //  Created by Mutlu Aydin on 6/15/22.
 //
 
-import UIKit
+import Foundation
 
 
-extension String {
+struct AppFont {
     
-    static let textFont = "DINCondensed-Bold"
+    static let textFontBold = "AmericanTypewriter-Semibold"
+    static let textFontNormal = "AmericanTypewriter"
+    static let textFontLight = "AmericanTypewriter-Light"
+
+
     
 }

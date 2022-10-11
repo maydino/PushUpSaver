@@ -79,6 +79,7 @@ final class StatsViewController: UIViewController, UITableViewDataSource, UITabl
         let stat = statsArray[indexPath.row]
         
         cell.textLabel?.text = "Push Up: \(stat.pushUpDone!), Date: \(stat.date!)"
+        cell.textLabel?.font = UIFont(name: AppFont.textFontNormal, size: 16)
         cell.backgroundColor = .clear
         cell.textLabel?.textColor = UIColor(named: AppColors.textColor)
         

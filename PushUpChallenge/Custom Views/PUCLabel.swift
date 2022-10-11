@@ -18,11 +18,12 @@ class PUCLabel: UILabel {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(textAlignment: NSTextAlignment, fontSize: CGFloat, title: String) {
+    init(textAlignment: NSTextAlignment, textFontName: String, fontSize: CGFloat, title: String) {
         super .init(frame: .zero)
         self.textAlignment = textAlignment
         self.font = UIFont.systemFont(ofSize: fontSize)
         self.text = title
+        self.font = UIFont(name: textFontName, size: fontSize)
         configure()
         
     }

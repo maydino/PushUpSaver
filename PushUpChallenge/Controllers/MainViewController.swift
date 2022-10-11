@@ -72,6 +72,10 @@ final class MainViewController: UIViewController {
     func saveButtonConfiguration() {
         
         saveButton.setTitle("Click and Enter Push Ups", for: .normal)
+        saveButton.titleLabel?.font = UIFont(name: AppFont.textFontBold, size: 30)
+        saveButton.titleLabel?.lineBreakMode = .byWordWrapping
+        saveButton.titleLabel?.textAlignment = .center
+
         saveButton.addTarget(self, action: #selector(saveButtonPressed), for: .touchUpInside)
         view.addSubview(saveButton)
         
@@ -79,7 +83,7 @@ final class MainViewController: UIViewController {
             saveButton.widthAnchor.constraint(equalToConstant: 250),
             saveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
             saveButton.topAnchor.constraint(equalTo: pushUpImage.bottomAnchor, constant: 60),
-            saveButton.heightAnchor.constraint(equalToConstant: 50)
+            saveButton.heightAnchor.constraint(equalToConstant: 100)
             
             
         ])

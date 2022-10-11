@@ -10,15 +10,15 @@ import UIKit
 class SettingsViewController: UIViewController {
         
     // Reminder on and off row, First Row
-    let darkModeOnLabel = PUCLabel(textAlignment: .left, fontSize: 20, title: "Dark mode")
+    let darkModeOnLabel = PUCLabel(textAlignment: .left, textFontName: AppFont.textFontNormal, fontSize: 20, title: "Dark mode")
     let darkModeOnSwitch = UISwitch()
     
     // Reminder on and off row, Second Row
-    let dailyReminderOnOffLabel = PUCLabel(textAlignment: .left, fontSize: 20, title: "Daily Reminder On-Off")
+    let dailyReminderOnOffLabel = PUCLabel(textAlignment: .left, textFontName: AppFont.textFontNormal, fontSize: 20, title: "Daily Reminder On-Off")
     let dailyReminderSwitch = UISwitch()
     
     // Time Picker Info, Third Row
-    let timePickTextLabel = PUCLabel(textAlignment: .left, fontSize: 20, title: "Pick the daily reminder time")
+    let timePickTextLabel = PUCLabel(textAlignment: .left, textFontName: AppFont.textFontNormal, fontSize: 20, title: "Set reminder time")
     let timePickTextField = PUCTextField()
     
     // Time Picker, Bottom Row
@@ -109,7 +109,7 @@ class SettingsViewController: UIViewController {
         
         NSLayoutConstraint.activate([
         
-            dailyReminderOnOffLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 140),
+            dailyReminderOnOffLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
             dailyReminderOnOffLabel.heightAnchor.constraint(equalToConstant: 50),
             dailyReminderOnOffLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             dailyReminderOnOffLabel.widthAnchor.constraint(equalToConstant: 240)
@@ -155,7 +155,7 @@ class SettingsViewController: UIViewController {
         
         NSLayoutConstraint.activate([
         
-            timePickTextLabel.topAnchor.constraint(equalTo: dailyReminderOnOffLabel.bottomAnchor, constant: 20),
+            timePickTextLabel.topAnchor.constraint(equalTo: dailyReminderOnOffLabel.bottomAnchor, constant: 10),
             timePickTextLabel.heightAnchor.constraint(equalToConstant: 40),
             timePickTextLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             timePickTextLabel.widthAnchor.constraint(equalToConstant: 240)
