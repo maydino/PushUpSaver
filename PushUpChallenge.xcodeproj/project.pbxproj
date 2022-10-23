@@ -24,7 +24,7 @@
 		B18F8998285FB4A700CFD844 /* Second.png in Resources */ = {isa = PBXBuildFile; fileRef = B18F8995285FB4A700CFD844 /* Second.png */; };
 		B18F8999285FB4A700CFD844 /* Third.png in Resources */ = {isa = PBXBuildFile; fileRef = B18F8996285FB4A700CFD844 /* Third.png */; };
 		B191090627CF1EB2004200A6 /* PUCAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B191090527CF1EB2004200A6 /* PUCAlert.swift */; };
-		B19A71E72857E0B300180560 /* DateManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19A71E62857E0B300180560 /* DateManagement.swift */; };
+		B19A71E72857E0B300180560 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19A71E62857E0B300180560 /* DateManager.swift */; };
 		B1A8FEDF285AD13000C53CD4 /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A8FEDE285AD13000C53CD4 /* AppFont.swift */; };
 		B1BC970A27BA0FA200A8DED5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BC970927BA0FA200A8DED5 /* AppDelegate.swift */; };
 		B1BC970C27BA0FA200A8DED5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BC970B27BA0FA200A8DED5 /* SceneDelegate.swift */; };
@@ -32,7 +32,7 @@
 		B1BC971327BA0FA400A8DED5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1BC971227BA0FA400A8DED5 /* Assets.xcassets */; };
 		B1BC971627BA0FA400A8DED5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1BC971427BA0FA400A8DED5 /* LaunchScreen.storyboard */; };
 		B1BFF26628EDE7A80037628F /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BFF26528EDE7A80037628F /* Date+Ext.swift */; };
-		B1E304D928F1E4A900CA967E /* PUCNeumorphicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E304D828F1E4A900CA967E /* PUCNeumorphicView.swift */; };
+		B1D90D1028FA60FB00B00C31 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D90D0F28FA60FB00B00C31 /* NotificationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,7 +53,7 @@
 		B18F8995285FB4A700CFD844 /* Second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Second.png; sourceTree = "<group>"; };
 		B18F8996285FB4A700CFD844 /* Third.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Third.png; sourceTree = "<group>"; };
 		B191090527CF1EB2004200A6 /* PUCAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PUCAlert.swift; sourceTree = "<group>"; };
-		B19A71E62857E0B300180560 /* DateManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManagement.swift; sourceTree = "<group>"; };
+		B19A71E62857E0B300180560 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		B1A8FEDE285AD13000C53CD4 /* AppFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
 		B1BC970627BA0FA200A8DED5 /* PushUpChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PushUpChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1BC970927BA0FA200A8DED5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -63,7 +63,7 @@
 		B1BC971527BA0FA400A8DED5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B1BC971727BA0FA400A8DED5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B1BFF26528EDE7A80037628F /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
-		B1E304D828F1E4A900CA967E /* PUCNeumorphicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PUCNeumorphicView.swift; sourceTree = "<group>"; };
+		B1D90D0F28FA60FB00B00C31 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +80,8 @@
 		B11AEAFA28E3B3F100CC076D /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				B19A71E62857E0B300180560 /* DateManagement.swift */,
+				B19A71E62857E0B300180560 /* DateManager.swift */,
+				B1D90D0F28FA60FB00B00C31 /* NotificationManager.swift */,
 				B1298F1A285400FF0044D053 /* UserDefaultString.swift */,
 				B13F691A27D47E0E00CCF605 /* AppColors.swift */,
 				B1A8FEDE285AD13000C53CD4 /* AppFont.swift */,
@@ -127,7 +128,6 @@
 				B13E887528E504AC0062D8D0 /* PUCTitleLabel.swift */,
 				B13E887D28E505F60062D8D0 /* PUCBodyLabel.swift */,
 				B13E887728E504D60062D8D0 /* PUCLabel.swift */,
-				B1E304D828F1E4A900CA967E /* PUCNeumorphicView.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -280,9 +280,9 @@
 				B191090627CF1EB2004200A6 /* PUCAlert.swift in Sources */,
 				B16E2D2828E8BF1F00D7BE40 /* DataModel.xcdatamodeld in Sources */,
 				B13E887C28E505A50062D8D0 /* PUCTextField.swift in Sources */,
-				B19A71E72857E0B300180560 /* DateManagement.swift in Sources */,
-				B1E304D928F1E4A900CA967E /* PUCNeumorphicView.swift in Sources */,
+				B19A71E72857E0B300180560 /* DateManager.swift in Sources */,
 				B13E887E28E505F60062D8D0 /* PUCBodyLabel.swift in Sources */,
+				B1D90D1028FA60FB00B00C31 /* NotificationManager.swift in Sources */,
 				B13E888328E512080062D8D0 /* SettingsViewController.swift in Sources */,
 				B1BFF26628EDE7A80037628F /* Date+Ext.swift in Sources */,
 			);
@@ -424,7 +424,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 6UY9XT6W64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PushUpChallenge/Info.plist;
@@ -439,12 +439,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mutluaydin.PushUpChallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -454,7 +454,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 6UY9XT6W64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PushUpChallenge/Info.plist;
@@ -469,12 +469,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mutluaydin.PushUpChallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

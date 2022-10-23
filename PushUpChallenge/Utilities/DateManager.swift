@@ -1,5 +1,5 @@
 //
-//  DateManagement.swift
+//  DateManager.swift
 //  PushUpChallenge
 //
 //  Created by Mutlu Aydin on 6/13/22.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DateManagement {
+struct DateManager {
     
     let today = Date()
     let tomorrow = Date().addingTimeInterval(86400)

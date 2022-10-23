@@ -19,7 +19,7 @@ struct UserDefaultString {
     static let dayLeftString = "dayLeft" // Will gone
     
     static let defaults = UserDefaults.standard
-    let dateManagement = DateManagement()
+    let dateManagement = DateManager()
     
     //MARK: - Clean all the user defaults data
     func removeUserDefaultsObjects() {
@@ -38,5 +38,7 @@ struct UserDefaultString {
             return 30
         }
     }
+    
+ 
     
 }

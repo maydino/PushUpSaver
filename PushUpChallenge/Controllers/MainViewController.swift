@@ -10,13 +10,8 @@ import UserNotifications
 import CoreData
 
 final class MainViewController: UIViewController {
-    
-    let darkShadow = CALayer()
-    let lightShadow = CALayer()
-    let cornerRadius: CGFloat = 5
-    let shadowRadius: CGFloat = 10
-    
-    private let todayDate = Date.now
+       
+    lazy var todayDate = Date()
     private var pushUpTextFieldNumber : Int?
     
     // Care Data Properties
@@ -31,6 +26,8 @@ final class MainViewController: UIViewController {
         return image
     }()
     
+    private let lastPusUpLabel = PUCLabel()
+    
     private let saveButton = PUCButton()
     
     override func viewDidLoad() {
@@ -42,12 +39,16 @@ final class MainViewController: UIViewController {
                 
         //MARK: - Configure Views
         pushUpImageConfiguration()
-        saveButtonConfiguration()
+        enterPushUpsButtonConfiguration()
+        lastPushUpLabelConfiguration()
         
         // See the file directory for Core Data
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
+        loadItems()
+        
     }
+    
 
     // MARK: - UI Configuration Functions
     
@@ -68,15 +69,24 @@ final class MainViewController: UIViewController {
     }
     
 
-    // Save Completed Push Ups Button Configuration
-    func saveButtonConfiguration() {
+    // Enter Completed Push Ups Button Configuration
+    func enterPushUpsButtonConfiguration() {
         
         saveButton.setTitle("Click and Enter Push Ups", for: .normal)
-        saveButton.titleLabel?.font = UIFont(name: AppFont.textFontBold, size: 30)
+        saveButton.titleLabel?.font = UIFont(name: AppFont.textFontNormal, size: 30)
         saveButton.titleLabel?.lineBreakMode = .byWordWrapping
         saveButton.titleLabel?.textAlignment = .center
-
+        // Shadow
+        saveButton.layer.shadowRadius = 5
+        saveButton.layer.shadowOffset = .zero
+        saveButton.layer.shadowOpacity = 0.5
+        saveButton.layer.shadowColor = UIColor.white.cgColor
+        saveButton.layer.shouldRasterize = false
+        saveButton.layer.masksToBounds = false
+        
+        // Action
         saveButton.addTarget(self, action: #selector(saveButtonPressed), for: .touchUpInside)
+
         view.addSubview(saveButton)
         
         NSLayoutConstraint.activate([
@@ -84,11 +94,27 @@ final class MainViewController: UIViewController {
             saveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
             saveButton.topAnchor.constraint(equalTo: pushUpImage.bottomAnchor, constant: 60),
             saveButton.heightAnchor.constraint(equalToConstant: 100)
-            
-            
         ])
-        
  
+    }
+    
+    // Last Push Up Label View Configuration
+    func lastPushUpLabelConfiguration() {
+        lastPusUpLabel.textAlignment = .center
+        
+        DispatchQueue.main.async {
+            let stat = self.statsArray.first
+            self.lastPusUpLabel.text = "Your Last Push Up: \(stat?.pushUpDone ?? "0")"
+        }
+        
+        view.addSubview(lastPusUpLabel)
+        
+        NSLayoutConstraint.activate([
+            lastPusUpLabel.widthAnchor.constraint(equalToConstant: view.bounds.width*0.9),
+            lastPusUpLabel.topAnchor.constraint(equalTo: saveButton.bottomAnchor, constant: 40),
+            lastPusUpLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
+            lastPusUpLabel.heightAnchor.constraint(equalToConstant: 50)
+        ])
     }
     
     //MARK: - Button Actions
@@ -101,6 +127,7 @@ final class MainViewController: UIViewController {
         
         let action = UIAlertAction(title: "Save", style: .default) { action in
             
+            self.todayDate = Date.now
             let newItem = Stats(context: self.context)
             newItem.date = self.todayDate.formatted(.dateTime)
             newItem.pushUpDone = textField.text ?? "0"
@@ -108,6 +135,9 @@ final class MainViewController: UIViewController {
             self.statsArray.append(newItem)
             
             self.saveItems()
+            
+            self.lastPusUpLabel.text = "Your Last Push Up: \(textField.text ?? "0")"
+            
             print("Core Data saved")
 
         }
@@ -122,7 +152,6 @@ final class MainViewController: UIViewController {
         alert.addAction(action)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
 
-        
         present(alert, animated: false)
         
         if let checkTheValue = Int(textField.text!) {
@@ -140,14 +169,23 @@ final class MainViewController: UIViewController {
     
     
     func saveItems() {
-        
         do {
             try context.save()
         } catch {
             print("Error: \(error)")
         }
-        
-    }    
+    }
+    
+    // Load Core Data Items
+    func loadItems() {
+        let request : NSFetchRequest<Stats> = Stats.fetchRequest()
+        do {
+            statsArray = try context.fetch(request)
+            statsArray = statsArray.reversed()
+        } catch {
+            print("Error fetching data from context \(error)")
+        }
+    }
     
 }
 

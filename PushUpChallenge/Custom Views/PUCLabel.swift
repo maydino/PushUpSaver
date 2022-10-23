@@ -8,10 +8,12 @@
 import UIKit
 
 class PUCLabel: UILabel {
+    
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
+        self.font = UIFont(name: AppFont.textFontLight, size: 20)
     }
     
     required init?(coder: NSCoder) {

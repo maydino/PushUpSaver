@@ -10,9 +10,9 @@ import Foundation
 
 struct AppFont {
     
-    static let textFontBold = "AmericanTypewriter-Semibold"
-    static let textFontNormal = "AmericanTypewriter"
-    static let textFontLight = "AmericanTypewriter-Light"
+    static let textFontBold = "Avenir-Black"
+    static let textFontNormal = "Avenir-Medium"
+    static let textFontLight = "Avenir-Light"
 
 
     

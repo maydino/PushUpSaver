@@ -35,9 +35,7 @@ final class StatsViewController: UIViewController, UITableViewDataSource, UITabl
         tableView.reloadData()
 
         loadItems()
-       
     }
-    
     
     override func viewDidAppear(_ animated: Bool) {
         tableView.reloadData()
@@ -46,7 +44,6 @@ final class StatsViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
         loadItems()
-
     }
     
     func tableViewConfigure() {
@@ -79,7 +76,8 @@ final class StatsViewController: UIViewController, UITableViewDataSource, UITabl
         let stat = statsArray[indexPath.row]
         
         cell.textLabel?.text = "Push Up: \(stat.pushUpDone!), Date: \(stat.date!)"
-        cell.textLabel?.font = UIFont(name: AppFont.textFontNormal, size: 16)
+        cell.textLabel?.font = UIFont(name: AppFont.textFontNormal, size: 20)
+        cell.textLabel?.adjustsFontSizeToFitWidth = true
         cell.backgroundColor = .clear
         cell.textLabel?.textColor = UIColor(named: AppColors.textColor)
         
@@ -93,7 +91,6 @@ final class StatsViewController: UIViewController, UITableViewDataSource, UITabl
             tableView.deleteRows(at: [indexPath], with: .fade)
             saveItems()
         }
-            
     }
     
     // Save Core Data Items
@@ -115,9 +112,6 @@ final class StatsViewController: UIViewController, UITableViewDataSource, UITabl
             print("Error fetching data from context \(error)")
         }
     }
-    
-    
-    
     
 }
 
