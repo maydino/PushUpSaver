@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		B11AEAF928E3B13900CC076D /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11AEAF828E3B13900CC076D /* MainTabBarController.swift */; };
+		B1249902292E99F600C53D8B /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = B12498FE292E99F500C53D8B /* 0.png */; };
+		B1249903292E99F600C53D8B /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = B12498FF292E99F500C53D8B /* 3.png */; };
+		B1249904292E99F600C53D8B /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = B1249900292E99F500C53D8B /* 2.png */; };
+		B1249905292E99F600C53D8B /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = B1249901292E99F600C53D8B /* 1.png */; };
 		B1298F1B285400FF0044D053 /* UserDefaultString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1298F1A285400FF0044D053 /* UserDefaultString.swift */; };
 		B13E887628E504AC0062D8D0 /* PUCTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13E887528E504AC0062D8D0 /* PUCTitleLabel.swift */; };
 		B13E887828E504D60062D8D0 /* PUCLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13E887728E504D60062D8D0 /* PUCLabel.swift */; };
@@ -20,9 +24,6 @@
 		B1643F57285F0B5500FE1EEF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B1643F56285F0B5500FE1EEF /* README.md */; };
 		B16E2D2828E8BF1F00D7BE40 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B16E2D2628E8BF1F00D7BE40 /* DataModel.xcdatamodeld */; };
 		B176268727BCC70E00F05028 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B176268627BCC70E00F05028 /* StatsViewController.swift */; };
-		B18F8997285FB4A700CFD844 /* First.png in Resources */ = {isa = PBXBuildFile; fileRef = B18F8994285FB4A700CFD844 /* First.png */; };
-		B18F8998285FB4A700CFD844 /* Second.png in Resources */ = {isa = PBXBuildFile; fileRef = B18F8995285FB4A700CFD844 /* Second.png */; };
-		B18F8999285FB4A700CFD844 /* Third.png in Resources */ = {isa = PBXBuildFile; fileRef = B18F8996285FB4A700CFD844 /* Third.png */; };
 		B191090627CF1EB2004200A6 /* PUCAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B191090527CF1EB2004200A6 /* PUCAlert.swift */; };
 		B19A71E72857E0B300180560 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19A71E62857E0B300180560 /* DateManager.swift */; };
 		B1A8FEDF285AD13000C53CD4 /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A8FEDE285AD13000C53CD4 /* AppFont.swift */; };
@@ -37,6 +38,10 @@
 
 /* Begin PBXFileReference section */
 		B11AEAF828E3B13900CC076D /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		B12498FE292E99F500C53D8B /* 0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0.png; sourceTree = "<group>"; };
+		B12498FF292E99F500C53D8B /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		B1249900292E99F500C53D8B /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		B1249901292E99F600C53D8B /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		B1298F1A285400FF0044D053 /* UserDefaultString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultString.swift; sourceTree = "<group>"; };
 		B13E887528E504AC0062D8D0 /* PUCTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PUCTitleLabel.swift; sourceTree = "<group>"; };
 		B13E887728E504D60062D8D0 /* PUCLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PUCLabel.swift; sourceTree = "<group>"; };
@@ -49,9 +54,6 @@
 		B1643F56285F0B5500FE1EEF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B16E2D2728E8BF1F00D7BE40 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		B176268627BCC70E00F05028 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
-		B18F8994285FB4A700CFD844 /* First.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = First.png; sourceTree = "<group>"; };
-		B18F8995285FB4A700CFD844 /* Second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Second.png; sourceTree = "<group>"; };
-		B18F8996285FB4A700CFD844 /* Third.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Third.png; sourceTree = "<group>"; };
 		B191090527CF1EB2004200A6 /* PUCAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PUCAlert.swift; sourceTree = "<group>"; };
 		B19A71E62857E0B300180560 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		B1A8FEDE285AD13000C53CD4 /* AppFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
@@ -101,9 +103,10 @@
 		B1643F58285F0D8100FE1EEF /* ReadmeImages */ = {
 			isa = PBXGroup;
 			children = (
-				B18F8994285FB4A700CFD844 /* First.png */,
-				B18F8995285FB4A700CFD844 /* Second.png */,
-				B18F8996285FB4A700CFD844 /* Third.png */,
+				B12498FE292E99F500C53D8B /* 0.png */,
+				B1249901292E99F600C53D8B /* 1.png */,
+				B1249900292E99F500C53D8B /* 2.png */,
+				B12498FF292E99F500C53D8B /* 3.png */,
 			);
 			path = ReadmeImages;
 			sourceTree = "<group>";
@@ -249,12 +252,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1249902292E99F600C53D8B /* 0.png in Resources */,
+				B1249904292E99F600C53D8B /* 2.png in Resources */,
 				B1643F57285F0B5500FE1EEF /* README.md in Resources */,
-				B18F8999285FB4A700CFD844 /* Third.png in Resources */,
+				B1249903292E99F600C53D8B /* 3.png in Resources */,
 				B1BC971627BA0FA400A8DED5 /* LaunchScreen.storyboard in Resources */,
 				B1BC971327BA0FA400A8DED5 /* Assets.xcassets in Resources */,
-				B18F8998285FB4A700CFD844 /* Second.png in Resources */,
-				B18F8997285FB4A700CFD844 /* First.png in Resources */,
+				B1249905292E99F600C53D8B /* 1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,7 +432,7 @@
 				DEVELOPMENT_TEAM = 6UY9XT6W64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PushUpChallenge/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "30 Days Push Up Challange";
+				INFOPLIST_KEY_CFBundleDisplayName = "Push Up Saver";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
@@ -458,7 +462,7 @@
 				DEVELOPMENT_TEAM = 6UY9XT6W64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PushUpChallenge/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "30 Days Push Up Challange";
+				INFOPLIST_KEY_CFBundleDisplayName = "Push Up Saver";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;

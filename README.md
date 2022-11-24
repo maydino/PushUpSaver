@@ -1,27 +1,24 @@
-# Push Up Challenge for 30 Days 
-Push Up Challenge App with UIKIT
-
-
-An iOS app for helping count 100 push up daily.
+# Push Up Saver 
+Get back in shape by tracking your daily push-up counts.
+Available in AppStore!
 
 ## Features
-* Counting 100 push up daily
-* If you commit and do 100 pushes for 30 days, you complete the challenge
-* The app remembers where you left 
-* Sends local notifications
-* Touch with your nose to the screen, and the counter will go up
+* Core Data for saving push-up counts and dates
+* Set daily reminders and receive local notifications
+* Implemented UI programmatically by using Layout Constraint anchors to manage views across different iPhones
+* Dark mode/ light mode control through the app
+* MVC Design pattern
 
 ## Technologies
 * Swift 5
 * UIKit
 * User Notifications
-* Dates
-* Delegate Implementation
-* Property Observer
+* Delegate Pattern
+* Core Data
 
 
- <img src="ReadmeImages/First.png" width="200" height="400" /> <img src="ReadmeImages/Second.png" width="200" height="400" />
-   <img src="ReadmeImages/Third.png" width="200" height="400" />
+ <img src="ReadmeImages/0.png" width="200" height="400" /> <img src="ReadmeImages/1.png" width="200" height="400" />
+   <img src="ReadmeImages/2.png" width="200" height="400" /> <img src="ReadmeImages/3.png" width="200" height="400" />
 
 
               
