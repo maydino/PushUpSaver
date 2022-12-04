@@ -3,6 +3,7 @@
 //  PushUpChallenge
 //
 //  Created by Mutlu Aydin on 10/5/22.
+//  Copyright © 2022 Mutlu Aydin. All rights reserved.
 //
 
 import Foundation

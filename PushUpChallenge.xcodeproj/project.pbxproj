@@ -223,6 +223,7 @@
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1320;
+				ORGANIZATIONNAME = "Mutlu Aydin";
 				TargetAttributes = {
 					B1BC970527BA0FA200A8DED5 = {
 						CreatedOnToolsVersion = 13.2.1;
